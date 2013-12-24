@@ -106,7 +106,7 @@ if (( int ) $child == $child)
 		$row = $rows[0];
 		$context = array ();
 	
-		$row['complexity_txt'] = $complexity[$row['complexity']];
+		$row['complexity_txt'] = $complexity[$row['complexity']]['name'];
 		$date_start = new DateTime($row['date_start']);
 		$date_finish = new DateTime($row['date_finish']);
 		$row['period'] = $date_start->diff($date_finish)->days;
