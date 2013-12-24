@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    {{ block.super }}
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+
+    
+    <script type="text/javascript" src="{{admin_path}}/common/templates/autofill.js.php"></script>
+    <script type="text/javascript" src="{{admin_path}}/common/templates/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="{{admin_path}}/common/templates/AjexFileManager/ajex.js"></script>
+    
+    <!--
+    <script type="text/javascript" src="{{admin_path}}/common/templates/tiny_mce/tiny_mce.js"></script>
+    <script type="text/javascript">
+        tinyMCE.init({
+            mode : "none",
+            theme : "advanced",
+            width : "900",
+            height : "300",
+            // new init code
+                extended_valid_elements : 'script[type|src],iframe[src|style|width|height|scrolling|marginwidth|marginheight|frameborder],div[*],p[*],object[width|height|classid|codebase|embed|param],param[name|value],embed[param|src|type|width|height|flashvars|wmode]',
+		media_strict: false,
+                theme_advanced_resizing : true,
+		relative_urls : "false",
+		remove_script_host : false,
+		convert_urls : false
+        });
+    </script>
+    <!-- TinyMCE -->
+
+    <script>
+        function admin_wysiwyg_add(admin_wysiwyg_link, admin_wysiwyg_origin){
+        }
+    </script>
+    <script>
+        function admin_wysiwyg_check_submit(){
+            return true;
+        }
+    </script>
+
+{% endblock %}
+
+{% block body %}
+
+    <h1>{{title}}</h1>
+
+    <form id="adminform" action="{{self_url}}" method="POST" enctype="multipart/form-data" onsubmit="admin_wysiwyg_check_submit();">
+        <input type="hidden" name="adminaction" value="{{adminaction}}" />
+        <input type="hidden" name="fromurl"     value="{{from_url}}"  />
+        <table border="1">
+            <td colspan="2" align="center"><input type="submit" style="width: 200px;" name="submitbutton" value="Добавить!" /></td>
+            {{fields}}
+            <td colspan="2" align="center"><input type="submit" style="width: 200px;" name="submitbutton" value="Добавить!" /></td>
+        </table>
+    </form>
+
+{% endblock %}

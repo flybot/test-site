@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Ошибка!</title>
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+{% endblock %}
+
+{% block body %}
+    <center>
+        Ошибка!<br />
+        {{error}}
+
+        <p>
+        Пожалуйста пройдите <a href="{{from_url}}">назад</a>.
+        </p>
+    </center>
+{% endblock %}

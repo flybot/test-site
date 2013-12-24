@@ -1,0 +1,81 @@
+<div class="col-xs-12 col-sm-3 sidebar-offcanvas">
+	<h3>Данные о походе</h3>
+	<h4>Вы выбрали:</h4>
+	<ul>
+		<li>Карпаты</li>
+		<li>Средняя</li>
+	</ul>
+	<hr>
+	<h4>Регион</h4>
+	<ul>
+		{% for region in regions %}
+		<li><input type="checkbox" name="filter_region" class="filter_cb" value="{{region.alias}}" {{region.selected}}> {{region.name}}</li>
+		{% endfor %}
+	</ul>
+	<h4>Сложность</h4>
+	<ul>
+		{% for complexity in complexity_list %}
+		<li><input type="checkbox" name="filter_complexity" class="filter_cb" value="{{complexity.alias}}" {{complexity.selected}}>{{complexity.name}}</li>
+		{% endfor %}
+	</ul>	
+	<h4>Дата старта</h4>
+	<ul>
+		<li>Август</li>
+		<li>Сентябрь</li>
+		<li>Октябрь</li>
+	</ul>
+</div>
+
+<div class="col-xs-12 col-sm-9">
+	<div class="col-xs-12 col-sm-3">Сортировать по:</div>
+	<div class="col-xs-12 col-sm-3"> 
+		<button class="btn btn-default btn-sort" type="button" id="sort_date_start">
+			дате&nbsp;
+			{% if sort_name == 'date_start' %}
+			<span class="glyphicon glyphicon-chevron-{{sort_order}}"></span>
+			{% endif %}
+		</button>
+	</div>
+	<div class="col-xs-12 col-sm-3">
+		<button class="btn btn-default btn-sort" type="button" id="sort_complexity">
+			сложности&nbsp;
+			{% if sort_name == 'complexity' %}
+			<span class="glyphicon glyphicon-chevron-{{sort_order}}"></span>
+			{% endif %}
+		</button>
+	</div>
+	<div class="col-xs-12 col-sm-3">
+		<button class="btn btn-default btn-sort" type="button" id="sort_popularity">
+			популярности&nbsp;
+			{% if sort_name == 'popularity' %}
+			<span class="glyphicon glyphicon-chevron-{{sort_order}}"></span>
+			{% endif %}
+		</button>
+	</div>
+	<br />
+	<hr>
+	<br />
+{% for row in rows %}
+	<div class="col-xs-12 col-sm-2"><span class="label label-info">{{row.period}} дн.</span></div>
+	<div class="col-xs-12 col-sm-2"><span class="label label-info">{{row.distance}} км</span></div>
+	<div class="col-xs-12 col-sm-2"><span class="label label-info">{{row.complexity_txt}}</span></div>
+	<div class="col-xs-12 col-sm-2"><span class="label label-info">{{row.cost_grn}} грн / {{row.cost_rur}} руб / ${{row.cost_usd}}</span></div>
+	<div class="col-xs-12 col-sm-2"><span class="label label-info">{{row.start}}</span></div>
+	<div class="col-xs-12 col-sm-2"><span class="label label-info">{{row.finish}}</span></div>
+	<br />
+	<a href="/routes/{{row.id}}"><h2>{{row.name}}</h2></a>
+	<br />
+	<img src="{{row.thumb}}" style="width:25%; height:25%;"/>
+    <br />
+    {{row.descr_short}}
+    <a href="/routes/{{row.id}}">более подробно...</a>
+    <br />
+    <br />
+    <div class="col-xs-12 col-sm-3">Отзывы(0)</div>
+    <div class="col-xs-12 col-sm-3">Фото(14)</div>
+    <div class="col-xs-12 col-sm-3">Видео(2)</div>
+    <div class="col-xs-12 col-sm-3"><a href="#" class="btn btn-default">Заказать поход</a></div>  
+    <hr>
+    <br /> 
+{% endfor %}
+</div>

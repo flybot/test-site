@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    {{ block.super }}
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+{% endblock %}
+
+{% block body %}
+
+      <h1>{{title}}</h1>
+        <div>
+            {{filter_poslinks}}
+            <br />
+            {{filter_table}}
+            <br />
+            {{filter_poslinks}}
+        </div>
+
+{% endblock %}

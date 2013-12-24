@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    {{ block.super }}
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+    <script type="text/javascript" src="{{admin_path}}/common/templates/encoder.js" ></script>
+    <script type="text/javascript">
+     function cl_show(xname){
+        Encoder.EncodeType = "numerical";
+        Encoder.EncodeType = "entity";
+        tb = document.getElementById(xname);
+        cl = document.getElementById("cl_text");
+
+        if (tb.innerHTML.length < 1)
+            return;
+        cl.value = Encoder.htmlDecode(tb.innerHTML.replace( /\<br(\s*\/|)\>/g, '\n' )).replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+
+        hc = tb.offsetHeight-5;
+        wc = tb.offsetWidth;
+
+        cl.style.position = "absolute";
+        cl.style.display  = "block";
+        cl.style.posTop   = document.getElementById('history_main_table').offsetTop+tb.offsetTop+3;
+        cl.style.posLeft  = document.getElementById('history_main_table').offsetLeft+tb.offsetLeft;
+        cl.style.border   = "1px solid black";
+        cl.style.backgroundColor = "#F3F3F3";
+        cl.style.height   = ""+hc+"px";
+        cl.style.width    = ""+wc+"px";
+
+        cl.focus();
+        cl.select();
+
+     }
+
+     function cl_hide(){
+        cl = document.getElementById("cl_text");
+        cl.style.display  = "none";
+     }
+    </script>
+{% endblock %}
+
+{% block body %}
+
+      <h1>{{title}}</h1>
+      <p>Изменения внесены пользователём: {{admin}}</p>
+      <p>Дата внесения изменений: {{date}}</p>
+
+      <textarea style="display: none;" id="cl_text" onblur="cl_hide();" style="width: 735px;"></textarea>
+
+      <b>Изменения:</b>
+          <table border="1" class="history_table" id="history_main_table">
+              <tr><th>Поле</th><th>Старое</th><th>Новое</th></tr>
+              {% for val in vals %}
+              <tr class="history_row">
+                  <td class="history_td" >{{val.name}}</td>
+                  <td class="history_td" id="history_old_{{val.id}}" onclick="cl_show('history_old_{{val.id}}');">{{val.old}}</td>
+                  <td class="history_td" id="history_new_{{val.id}}" onclick="cl_show('history_new_{{val.id}}');">{{val.new}}</td>
+              </tr>
+              {% endfor %}
+          </table>
+
+{% endblock %}

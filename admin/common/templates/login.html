@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, max-age=0, must-revalidate"/>
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta http-equiv="Expires" content="Fri, 01 Jan 1990 00:00:00 GMT"/>
+    <link rel="icon" href="{{favicon}}" type="image/x-icon">
+    <title>Вход в административный интерфейс</title>
+
+    <script>
+        function dHeight(){
+            return Math.max(
+                Math.max(document.body.scrollHeight, document.documentElement.scrollHeight),
+                Math.max(document.body.offsetHeight, document.documentElement.offsetHeight),
+                Math.max(document.body.clientHeight, document.documentElement.clientHeight)
+            );
+        }
+        function dWidth(){
+            return Math.max(
+                Math.max(document.body.scrollWidth, document.documentElement.scrollWidth),
+                Math.max(document.body.offsetWidth, document.documentElement.offsetWidth),
+                Math.max(document.body.clientWidth, document.documentElement.clientWidth)
+            );
+        }
+        function OnResize(){
+            b = document.getElementById('button');
+            b.style.position = "absolute";
+            b.style.top  = ""+(dHeight()/2-b.offsetHeight/2) + "px";
+            b.style.left = ""+(dWidth() /2-b.offsetWidth /2) + "px";
+            b.focus();
+        }
+        window.onresize = function(event) {
+            OnResize();
+        }
+    </script>
+  </head>
+  <body onload="OnResize();">
+      <form action="{{log_url}}" method="post" style="">
+          <button id="button" style="font-size: 20px;">Login with<br/><img src="{{admin_path}}/common/templates/google.png" alt="Google"/></button>
+      </form>
+  </body>
+</html>

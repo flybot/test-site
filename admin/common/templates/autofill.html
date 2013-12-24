@@ -1,0 +1,10 @@
+<!-- // 09.08.11 shevayura // -->
+<input id="{{name}}__search" type="text" class="xsearch" autocomplete="off"
+               onkeyup="showResult('{{name}}', '{{other_table}}', '{{search_field}}', '{{value_field}}', '{{image_field}}', this.value, '{{format}}')"
+               onfocus=  "gotFocus('{{name}}', '{{other_table}}', '{{search_field}}', '{{value_field}}', '{{image_field}}', this.value, '{{format}}')"/>
+<a href="javascript: refreshResult('{{name}}', '{{other_table}}', '{{search_field}}', '{{value_field}}', '{{image_field}}', '', '{{format}}')" class="xf5">F5</a>
+{{addform}}
+
+<div id="{{name}}__livesearch" class="suggestion_list"
+     onclick="gotFocus('{{name}}', '{{other_table}}', '{{search_field}}', '{{value_field}}', '{{image_field}}', '', '{{format}}');" ></div>
+

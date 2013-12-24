@@ -1,0 +1,45 @@
+<h2>{{row.name}}</h2>
+<br />
+<div class="row">
+	<div class="col-xs-12 col-sm-5">
+		<img src="{{row.thumb}}" style="width:100%; height:100%;"/>
+	</div>
+
+	<div class="col-xs-12 col-sm-7">
+		<strong>Длительность похода</strong> - {{row.period}} дн.<br />
+		<strong>Километраж</strong> - {{row.distance}} км <br />
+		<strong>Сложность</strong> - {{row.complexity_txt}} <br />
+		<strong>Стоимость</strong> - {{row.cost_grn}} грн / {{row.cost_rur}} руб / ${{row.cost_usd}} <br />
+		<strong>Место старта</strong> - {{row.start}}<br />
+		<strong>Место финиша</strong> - {{row.finish}}<br />
+		<strong>Инструктор</strong> - {{row.trainer}}
+	</div>
+</div>
+<div class="row">
+	<br />
+	<a href="#" class="btn btn-default btn-block">Заказать поход</a>
+	<br>
+    {{row.descr_short}}
+    <br /> 
+</div>
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+  <li><a href="#descr" data-toggle="tab">Описание</a></li>
+  <li><a href="#circs" data-toggle="tab">Условия</a></li>
+  <li><a href="#preparation" data-toggle="tab">Подготовка</a></li>
+  <li><a href="#photos" data-toggle="tab">Фото</a></li>
+  <li><a href="#videos" data-toggle="tab">Видео</a></li>
+  <li><a href="#reviews" data-toggle="tab">Отзывы</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane fade in active" id="descr">{{row.descr_long}}</div>
+  <!-- TODO: панель подготовка - уточнить, какое поле тут выводится -->
+  <div class="tab-pane" id="circs">{{row.descr_short}}</div>
+  <div class="tab-pane" id="preparation">{{row.preparation}}</div>
+  <div class="tab-pane" id="photos">{{row.photos}}</div>
+  <div class="tab-pane" id="videos">{{row.videos}}</div>
+  <div class="tab-pane" id="reviews">{{row.reviews}}</div>
+</div>

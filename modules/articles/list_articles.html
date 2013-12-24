@@ -1,0 +1,13 @@
+<h2>{{article_type.name}}</h2>
+{{article_type.text}}
+<br />
+{% for row in rows %}
+	<a href="{{row.title}}">
+		<h3>{{row.name}}</h3>
+	</a>
+	<img src="{{row.thumb}}" style="width:25%; height:25%;"/>
+	{{row.text_short}}
+    <a href="{{row.title}}">Дальше...</a>
+    <hr>
+    <br />    
+{% endfor %}

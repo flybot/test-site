@@ -1,0 +1,63 @@
+
+<!-- Social buttons -->
+<div class="span4 pull-center">
+	<a href="http://www.facebook.com" class="btn btn-facebook"><i class="icon-facebook"></i> | Facebook</a>
+	<br> 
+	<a href="http://www.vk.com" class="btn btn-vk"><i class="icon-vk"></i>	| VK</a>
+	<br> 
+	<a href="http://www.google.com" class="btn btn-google-plus"><i class="icon-google-plus"></i> |	Google Plus</a>
+	<br> 
+	<a href="http://www.twitter.com" class="btn btn-twitter"><i class="icon-twitter"></i> | Twitter</a>
+	<br>
+	<a href="http://www.github.com" class="btn btn-github"><i class="icon-github"></i> | Github</a>
+	<br> 
+	<a href="http://www.pinterest.com" class="btn btn-pinterest"><i	class="icon-pinterest"></i> | Pinterest</a>
+	<br> 
+	<a href="http://www.linkedin.com" class="btn btn-linkedin"><i class="icon-linkedin"></i> | LinkedIn</a>
+	<br> 
+	<a href="http://www.instagram.com" class="btn btn-instagram"><i class="icon-camera-retro"></i> | Instagram</a>
+	<br> 
+	<a href="http://www.dropbox.com" class="btn btn-dropbox"><i	class="icon-dropbox"></i> | Dropbox</a>
+	<br>
+</div>
+<!-- /Social buttons -->
+
+<!-- Contact block -->
+<div class="list-group">
+	<span class="list-group-item">
+		<i class="icon-envelope"></i>
+		kuluarbc@yandex.ru
+	</span> 
+	<span class="list-group-item">
+		<i	class="icon-check"></i> +38 (095) 752-55-34
+	</span> 
+	<span class="list-group-item">
+		<i class="icon-check"></i> +38 (093) 880-95-03
+	</span> 
+	<span class="list-group-item">
+		<i class="icon-check"></i>+38 (098) 783-25-78
+	</span>
+</div>
+<!-- /Contact block -->
+
+<!-- Расписание походов -->
+<div class="list-group">
+	<h4>Расписание походов</h4>
+	<span class="list-group-item">Aaaaaaaaaaa</span> 
+	<span class="list-group-item">Bbbbbbbb</span> <span class="list-group-item">Ccccccccccc</span>
+</div>
+<!-- /Расписание походов -->
+
+
+<!-- список инструкторов -->
+<div class="list-group">
+	<h4>Список инструкторов</h4>
+	{% for trainer in trainers %}
+		<img src="{{trainer.thumb}}" style="width:25%; height:25%;"/>
+		<a href="/trainers/{{trainer.id}}">{{trainer.name}}</a>
+		<br>
+	{% endfor %}
+	<br />
+	<a href="/trainers">весь список</a>
+</div>
+<!-- /список инструкторов -->

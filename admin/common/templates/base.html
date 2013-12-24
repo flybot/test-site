@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, max-age=0, must-revalidate"/>
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta http-equiv="Expires" content="Fri, 01 Jan 1990 00:00:00 GMT"/>
+    <style type="text/css">
+     	@import url({{admin_path}}/common/templates/pickmeup.min.css);
+        @import url({{admin_path}}/common/templates/admin.css);
+    </style>
+
+    <link rel="icon" href="{{favicon}}" type="image/x-icon">
+    <style type="text/css" id="qwe104"></style>
+
+    {% block head %}
+    <title>{{title}}</title>
+    {% endblock %}
+
+    {% block javascript %}{% endblock %}
+    
+    
+    <script>
+        ndt = new Date();
+        if ((ndt.getDate() >= 24 && ndt.getMonth()+1 == 12) || (ndt.getDate() < 14 && ndt.getMonth()+1 == 1)){
+            document.write('<link rel="stylesheet" href="{{admin_path}}/common/templates/snow.css" type="text/css" media="screen" charset="utf-8" >');
+        }
+        JS_ADMIN_PATH='{{admin_path}}';
+    </script>
+    <script src="{{admin_path}}/common/templates/snow.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="{{admin_path}}/common/templates/jquery.pickmeup.min.js" type="text/javascript"></script>
+  </head>
+  <body>
+      {{ menu }}
+
+      {% block body %}{% endblock %}
+      
+      
+
+      <div class="admin_footer">
+          <div class="admin_time_to_gen">
+              {% if gentime %}
+              <a href="#" title="Страница сгенерирована за {{gentime}} секунд.">*</a>
+              {% endif %}
+          </div>
+      </div>
+      <script type="text/javascript">
+        function getElementsByClassName(classname, node)  {
+            if(!node) node = document.getElementsByTagName("body")[0];
+            var a = [];
+            var re = new RegExp('\\b' + classname + '\\b');
+            var els = node.getElementsByTagName("*");
+            for(var i=0,j=els.length; i<j; i++)
+                if(re.test(els[i].className))a.push(els[i]);
+            return a;
+        }
+        function getDocHeight() {
+            var D = document;
+            return Math.max(
+                Math.max(D.body.scrollHeight, D.documentElement.scrollHeight),
+                Math.max(D.body.offsetHeight, D.documentElement.offsetHeight),
+                Math.max(D.body.clientHeight, D.documentElement.clientHeight)
+            );
+        }
+
+        dt = new Date();
+        if (dt.getDate() == 1 && dt.getMonth()+1 == 4){
+            style = document.createElement('style');
+            style.setAttribute('id', 'firstaprilstyle');
+            rules = document.createTextNode('.available_block { -o-transform: rotate(180deg); -webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);}');
+
+            style.type = 'text/css';
+            if(style.styleSheet)
+                style.styleSheet.cssText = rules.nodeValue;
+            else style.appendChild(rules);
+            document.getElementsByTagName('head')[0].appendChild(style);
+
+            a = document.createElement('a');
+            a.href = 'javascript: (elem=document.getElementById(\'firstaprilstyle\')).parentNode.removeChild(elem);';
+            a.title= 'Это не глюк. С праздником!';
+            a.innerHTML = '*';
+            a.style.color = 'gray';
+            a.style.fontSize = '20px';
+            document.getElementsByClassName('available_block')[0].appendChild(a);
+        }
+    
+    
+        if( (dt.getDate() >= 24 && dt.getMonth()+1 == 12) || (dt.getDate() < 14 && dt.getMonth()+1 == 1) ){
+            sn_container = document.createElement('div');
+            sn_container.setAttribute("id", "container");
+            sn_container.style.top='0px';
+            document.getElementsByTagName("body")[0].appendChild(sn_container);
+            
+            sn_snow_container = document.createElement('div');
+            sn_snow_container.setAttribute("id", "snowContainer");
+            document.getElementById("container").appendChild(sn_snow_container);
+            
+            document.getElementById("container").style.height = getDocHeight()+"px";
+            document.getElementById("container").style.width  = document.getElementsByTagName("body")[0].offsetWidth+"px";
+        }
+        
+        $(document).ready(function() {
+        	$('.date').each(function() {
+        			$(this).pickmeup({
+        	    format  		: 'Y-m-d',
+        	    hide_on_select	: true,
+        	    before_show		: function () {
+        			var $this	= $(this);
+        			$this.pickmeup('set_date', $this.val());
+        		},
+        		change			: function (formatted) {
+        			$(this).val(formatted);
+        		},
+        		locale			: {
+	        		 days: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"],
+    	             daysShort: ["Вск", "Пнд", "Втр", "Срд", "Чтв", "Птн", "Суб", "Вск"],
+        	         daysMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+            	     months: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+                	 monthsShort: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
+                 	 today: "Сегодня"                 	
+                 	 /*days: ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П'ятница", "Субота", "Неділя"],
+                     daysShort: ["Нед", "Пнд", "Втр", "Срд", "Чтв", "Птн", "Суб", "Нед"],
+                     daysMin: ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"],
+                     months: ["Cічень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"],
+                     monthsShort: ["Січ", "Лют", "Бер", "Кві", "Тра", "Чер", "Лип", "Сер", "Вер", "Жов", "Лис", "Гру"],
+                     today: "Сьогодні"*/
+                 }
+        	});
+        	});
+        });
+      </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block body %}
+      <h2>Изменение размера сохранённых картинок</h2>
+      
+      <h3>Параметры</h3>
+      <table border="1">
+          {% for pname, params in cparams %}
+          <tr>
+              <td>{{pname}}</td>
+              <td>
+                  {% for p in params %}
+                  <div style="{% if p.warn %}background-color: orange;{% endif %}">{{p.value}}</div>
+                  {% endfor %}
+              </td>
+          </tr>
+          {% endfor %}
+      </table>
+      
+      {% if log %}
+      <h3>Лог выполнения</h3>
+      <div>
+          {% for l in log %}
+          <div style="{% if l.warn %}background-color: orange;{% endif %}">{{l.value}}</div>
+          {% endfor %}
+      </div>
+      {% endif %}
+      
+      {% if errors %}
+      <h3>Ошибки</h3>
+      <div>
+          {% for e in errors %}
+          <div>{{e}}</div>
+          {% endfor %}
+      </div>
+      {% endif %}
+      
+      <br/><br/>
+      <form action="" method="POST">
+          {% for k,v in xform %}<input type="hidden" name="{{k}}" value="{{v}}" />
+          {% endfor %}
+          <input type="submit" name="admin_resizer_start" value="Начать" />
+      </form>
+{% endblock %}

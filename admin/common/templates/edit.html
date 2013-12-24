@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    {{ block.super }}
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+
+    
+    <script type="text/javascript" src="{{admin_path}}/common/templates/autofill.js.php?id={{id}}"></script>
+    <script type="text/javascript" src="{{admin_path}}/common/templates/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="{{admin_path}}/common/templates/AjexFileManager/ajex.js"></script>
+    <!-- Import CKEditor -->
+
+    <!--
+    <script type="text/javascript" src="{{admin_path}}/common/templates/tiny_mce/tiny_mce.js"></script>
+    <script type="text/javascript">
+        tinyMCE.init({
+            mode : "none",
+            theme : "advanced",
+            width : "900",
+            height : "300",
+            // new init code
+            plugins: "legacyoutput",
+                extended_valid_elements : 'script[type|src],iframe[src|style|width|height|scrolling|marginwidth|marginheight|frameborder],div[*],p[*],object[width|height|classid|codebase|embed|param],param[name|value],embed[param|src|type|width|height|flashvars|wmode]',
+		media_strict: false,
+                theme_advanced_resizing : true,
+		relative_urls : "false",
+		remove_script_host : false,
+		convert_urls : false,
+
+                verify_html : false,
+                verify_css_classes : true,
+                cleanup : false,
+                cleanup_on_startup : false
+        });
+    </script>
+    <!-- TinyMCE -->
+
+    <script>
+        var admin_wysiwyg_fields = [];
+        function admin_wysiwyg_add(admin_wysiwyg_link){
+            admin_wysiwyg_fields.push(new Array(admin_wysiwyg_link, admin_wysiwyg_link.getData()));
+        }
+    </script>
+    <script>
+        function admin_wysiwyg_check_submit(){
+            for (awcsi=0; awcsi<admin_wysiwyg_fields.length; awcsi++){
+                if (admin_wysiwyg_fields[awcsi][1] == admin_wysiwyg_fields[awcsi][0].getData()){
+                    admin_wysiwyg_fields[awcsi][0].setReadOnly(true);
+                    admin_wysiwyg_fields[awcsi][0].setData("##hello_from_shevayura_and_no_changes_made##");
+                }
+            }
+            return true;
+        }
+    </script>
+{% endblock %}
+
+{% block body %}
+
+    <h1>{{title}}</h1>
+
+    <form id="adminform" action="{{self_url}}" method="POST" enctype="multipart/form-data" onsubmit="admin_wysiwyg_check_submit();">
+        <input type="hidden" name="adminaction" value="{{adminaction}}" />
+        <input type="hidden" name="fromurl"     value="{{from_url}}"  />
+        {% if id %}
+        <input type="hidden" name="id"          value="{{id}}" />
+        {% endif %}
+        <table border="1">
+            <td colspan="2" align="center"><input type="submit" style="width: 200px;" name="submitbutton" value="Сохранить" /></td>
+            {{fields}}
+            <td colspan="2" align="center"><input type="submit" style="width: 200px;" name="submitbutton" value="Сохранить" /></td>
+        </table>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    {{ block.super }}
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+{% endblock %}
+
+{% block body %}
+
+    <h1>Корзина таблицы {{current.name}} (`{{current.table}}`)</h1>
+
+        {{filter_table}}
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    {{ block.super }}
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+{% endblock %}
+
+{% block body %}
+
+    <h1>Починка путей других хостингов</h1>
+    <h3>Будьте крайне осторожны используя это!</h3>
+
+    <form method="get">
+        Таблицы для применения:<br/>
+        <select name="tables[]" multiple size="20">
+            {% for t in tables %}
+            <option value="{{t}}" {% if !tables_selected %}selected{% endif %} {% for tt in tables_selected %}{% if tt == t %}selected{% endif %}{% endfor %} >{{t}}</option>
+            {% endfor %}
+        </select>
+        <br/><br/>
+        
+        Что нужно заменить:<br/>
+        <input type="text" name="what" value="{{what}}" />
+        
+        <br/><br/>
+        
+        На что заменить:<br/>
+        <input type="radio" name="droot" value="1" {% if  droot_selected %}checked{% endif %}> Использовать &QUOT;{{droot}}&QUOT;<br/>
+        <input type="radio" name="droot" value="0" {% if !droot_selected %}checked{% endif %}> <input type="text" name="to" value="{{to}}" />
+        
+        <br/><br/>
+        
+        <input type="submit" name="submit" value="Start" />
+    </form>
+    
+    {% if log %}
+    <h2>Сообщения выполнения</h2>
+    <table border="1">
+        {% for l in log %}
+        <tr>
+            <td 
+                {% if l.type == 'warning' %}style="background-color: yellow;"{% endif %}
+                {% if l.type == 'error'   %}style="background-color: red;"{% endif %}
+                {% if l.type == 'message' %}style="background-color: greenyellow;"{% endif %}
+                >{{l.type|capitalize}}</td>
+            <td>{{l.message}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+{% endblock %}

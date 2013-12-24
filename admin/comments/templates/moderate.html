@@ -1,0 +1,65 @@
+{% if !header_printed %}
+<style type="text/css">
+    .comments_button_main{
+        width: 100%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+}
+</style>
+
+<script src="/admin/comments/templates/jquery-1.8.0.min.js" ></script>
+<script>
+    function commentsChange(cid){
+        cid = parseInt(cid);
+        if (isNaN(cid) || !cid) return;
+        $("#comment_button_"+cid).css('display', 'none');
+        $("#comment_wait_"+cid).css('display', 'block');
+        moderate = parseInt($("#comment_state_"+cid).val())>0 ? 0 : 1;
+        $.post(window.location.pathname, {
+            'adminaction'       : 'edit',
+            'fromurl'           : '#xclose#',
+            'id'                : cid,
+            'xadmin_custom_req' : "1",
+            'submitbutton'      : "Ok",
+            'moderate'          : moderate
+        }).done( function(data){
+            $.ajax({
+                url: window.location.pathname+(window.location.pathname.toString().indexOf("?") < 0 ? "?" : "&")+"showcommentstate="+cid,
+                cache: false
+            }).done(function(subdata){
+                obj = jQuery.parseJSON(subdata);
+                $("#comment_button_"+cid).css('display', 'inline-block');
+                $("#comment_wait_"+cid).css('display', 'none');
+                if (parseInt(obj['moderate'])>0){
+                    $("#comment_state_"+cid).val(1);
+                    $("#comment_button_image_moderated_"+cid).css('display', 'none');
+                    $("#comment_button_image_inqueve_"+cid).css('display', 'block');
+                    $("#comment_button_"+cid).prop('title', 'Поставить обратно в очередь');
+
+                }else{
+                    $("#comment_state_"+cid).val(0);
+                    $("#comment_button_image_moderated_"+cid).css('display', 'block');
+                    $("#comment_button_image_inqueve_"+cid).css('display', 'none');
+                    $("#comment_button_"+cid).prop('title', 'Изменить в промодерировано');
+                    
+                }
+            });
+        });
+    }
+</script>
+{% endif %}
+
+<div class="comments_button_main" id="comments_main_button_{{id}}">
+    <input type="hidden" id="comment_state_{{id}}" value="{{moderate}}" />
+    <button id="comment_button_{{id}}" onclick="commentsChange('{{id}}');"
+            title="{% if moderate %}Поставить обратно в очередь{% else %}Изменить в промодерировано{% endif %}">
+        <img id="comment_button_image_moderated_{{id}}" style="display: {% if moderate %}none{% else %}block{% endif %};"
+             src="/admin/comments/templates/undo.gif" alt="Изменить в промодерировано"/>
+        <img id="comment_button_image_inqueve_{{id}}"   style="display: {% if moderate %}block{% else %}none{% endif %};"
+             src="/admin/comments/templates/ptica.gif"  alt="Поставить обратно в очередь"/>
+    </button>
+    <div class="comments_wait" id="comments_wait_{{id}}" style="display: none;">
+        В процессе...
+    </div>
+</div>

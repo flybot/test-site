@@ -1,0 +1,5 @@
+<input id="{{name}}__search" type="text" style="width:400px;" autocomplete="off"
+       onkeyup="showResult_xlink('{{name}}', '{{field}}', '{{search_field}}', this.value)"
+       onfocus=  "gotFocus_xlink('{{name}}', '{{field}}', '{{search_field}}', '')"/>
+<div id="{{name}}__livesearch" class="suggestion_list"
+     onclick="gotFocus_xlink('{{name}}', '{{field}}', '{{search_field}}', '');" ></div>

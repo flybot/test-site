@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, max-age=0, must-revalidate"/>
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta http-equiv="Expires" content="Fri, 01 Jan 1990 00:00:00 GMT"/>
+
+    
+    <title>Автообновление административного интерфейса</title>
+    
+    <style>
+        .updateinfo tr td{
+            padding: 5px;
+            vertical-align: text-top;
+            border-bottom: #000 solid 1px;
+        }
+        .canbeupdated{
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+  </head>
+  <body>
+      
+      {% if check %}
+      <div>
+          <h3>Проверка готовности</h3>
+          <ul>
+              {% for item in check %}
+              <li style="{% if item.color %}color: {{item.color}};{% endif %}">{{item.message}}</li>
+              {% endfor %}
+          </ul>
+      </div>
+      {% endif %}
+      
+      
+      {% if errors %}
+      <div>
+          <h3>Ошибки</h3>
+          <ul>
+              {% for item in errors %}
+              <li>{{item.message}}</li>
+              {% endfor %}
+          </ul>
+      </div>
+      {% endif %}
+      
+      
+      <div class="canbeupdated">
+          {% if canBeUpdated %}
+          <div class="updateready">
+              Всё готово к обновлению: <input type="button" onclick="window.location='{{phpself}}?updateaction=update'" value="Обновить" />
+          </div>
+          {% else %}
+          <div class="updatenotready">Обновление не может быть произведено</div>
+          {% endif %}
+      </div>
+      
+      <div>
+          <input type="button" onclick="window.location='{{phpself}}?updateaction=sync'" value="Постсинхронизация"/> (ручной запуск)
+      </div>
+      
+      
+      <div>
+          <h3>Последнее доступное обновление</h3>
+          <table class="updateinfo">
+              <tr>
+                  <td><b>Версия</b></td>
+                  <td>{{update.date}}</td>
+              </tr>
+              <tr>
+                  <td><b>Ссылки</b></td>
+                  <td>
+                      <a href="{{update.wiki}}" target="_blank">Просмотреть подробную информацию об обновлении</a><br/>
+                      <a href="{{update.link}}" target="_blank">Скачать архив для ручного обновления</a>
+                  </td>
+              </tr>
+              <tr>
+                  <td colspan="2">
+                      <b>Основная информация об обновлнении</b>
+                      <div>{{update.purpose}}</div>
+                  </td>
+              </tr>
+          </table>
+      </div>
+      
+      {% if update.history %}
+      <h3>История версий:</h3>
+      <div>
+          <table>
+            {% for u in update.history %}
+            {% if u.date != update.date %}
+            <tr>
+                <td style="border-bottom: 1px dashed gray;">
+                    <br/>
+                    <a href="{{u.wiki}}" target="_blank"><b>{{u.date}}</b></a><br/>
+                    {{u.purpose}}
+                </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+          </table>
+      </div>
+      {% endif %}
+      
+      
+  </body>
+</html>

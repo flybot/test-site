@@ -1,0 +1,214 @@
+/* 09.08.11 shevayura */
+.available_block {
+   display: block;
+   border-style: solid;
+   border-width: 1px;
+   font-size: 12px;
+   position: absolute;
+   top: 150px;
+   left: 10px;
+   width: 200px;
+}
+.available{
+    /*display: block;*/
+    width: 95%;
+}
+.available a{
+    display: inline;
+}
+.diff{
+    display: inline-block;
+    color: gray;
+}
+
+.err_fld{
+    background-color: red;
+}
+
+.container{
+
+    border-style: dotted;
+    border-width: 1px;
+    position: absolute;
+    left:220px;
+    top: 150px;
+
+}
+.poslinks{
+    float: left;
+    text-align: center;
+    margin-left: 400px;
+}
+.row1{
+    background-color: #D5D5D5;
+}
+.row2{
+    background-color: #E5E5E5;
+}
+.actionform{
+    display: inline;
+    margin: 0px;
+}
+
+.result{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/*MENU*/
+#nav, #nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #000;
+  background: #515151;
+  float: left;
+  width: 100%;
+}
+#nav{ padding-left: 15px;}
+#nav li {
+  float: left;
+  position: relative;
+  background: #515151;
+}
+
+#nav a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 4px 10px;
+  /*background: url(dot.png) repeat-y right;*/
+}
+#nav > li > a{
+	padding: 4px 20px;
+}
+#nav a:hover {
+  color: #000;
+  background: #ccc;
+}
+#nav li:hover,
+#nav li.jshover {
+  background: #333;
+}
+#nav .adminmenu_has_selected > a{
+    font-weight: bold;
+}
+#nav .adminmenu_this_selected > a{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#nav li ul {
+  display: none;
+  position: absolute;
+  top: 26px;
+  /*background: url(/common/templates/fone-tr.png);*/
+  padding: 8px 0;
+  width: 138px;
+}
+#nav li li a {
+  width: 118px;
+  background: none;
+}
+#nav li:hover ul,
+#nav li.jshover ul {
+  display: block;
+  z-index: 10;
+
+}
+
+#nav li:hover li ul,
+#nav li.jshover li ul {
+  display: none;
+  width: 138px;
+  top: -9px;
+  left: 118px;
+}
+#nav li:hover li:hover ul,
+#nav li.jshover li.jshover ul {
+  display: block;
+}
+
+.suggestion_list
+{
+    /*position: absolute;*/
+    background: white;
+    border: 1px solid;
+    padding: 4px;
+    text-align: left;
+    display: block;
+    width:  400px;
+    height: 200px;
+    overflow:auto;
+
+}
+.suggestion_list ul
+{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+.suggestion_list a
+{
+    text-decoration: none;
+    color: navy;
+}
+.suggestion_list .selected
+{
+    background: navy;
+    color: white;
+}
+.suggestion_list .selected a
+{
+    color: white;
+}
+#autosuggest
+{
+    display: none;
+}
+
+.xsearch{
+    width: 380px;
+}
+
+.xf5{
+    display: inline-block;
+    border-style: solid;
+    border-width: 1px;
+    padding: 0px 2px;
+    background-color: #D5D5D5;
+    margin-left: 3px;
+}
+
+.ManyToMany_select{
+    min-width: 200px;
+    min-height: 50px;
+    max-height: 200px;
+}
+
+.xselect{
+    display: inline-block;
+    min-width: 50px;
+    height: 230px;
+}
+
+.xhref{
+}
+
+.ximage{
+    margin-bottom: -7px;
+    height: 25px;
+}
+
+.admin_time_to_gen{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    
+}
+.admin_time_to_gen a{
+    color: #898980;
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+}

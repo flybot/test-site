@@ -1,0 +1,20 @@
+<h3>regions</h3>
+	{% for region in regions %}
+		<a href="{{region.link}}">
+			<h4>{{region.name}}</h4>
+			<img src="{{region.image}}" style="width:25%; height:25%;" />
+		</a>
+	{% endfor %}
+<br />
+{{steps}}
+<br />
+<h2>Отзывы</h2>
+{{reviews}}
+<br />
+<hr />
+<!-- содержимое why-not.html -->
+<h3>{{why-not}}</h3>
+<br />
+<!-- comment -->
+<h3>{{nearest-routes}}</h3>
+

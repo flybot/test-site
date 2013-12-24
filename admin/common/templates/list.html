@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    {{ block.super }}
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+    <script>
+        function admin_search_request(){
+            search_req  = '';
+            search_req += document.getElementById("admin_search_full").checked ? '&admin_search_full=1' : '';
+            search_req += document.getElementById("admin_search_html").checked ? '&admin_search_html=1' : '';
+            search_req += document.getElementById("admin_search_text").value   ? '&admin_search_text='+document.getElementById("admin_search_text").value : '';
+            search_req  = search_req.length > 0 ? search_req.substr(1, search_req.length) : '';
+            
+            search_link = '{{search_link}}'+search_req;
+            
+            document.location = search_link;
+        }
+    </script>
+    <script type="text/javascript">
+        function SPCurrentUrl(){
+            u = location.href;
+            u = u.split('?')[0];
+            return u;
+        }
+        function SuperParamChange(id, direction, pcount){
+            if (window.XMLHttpRequest){
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp=new XMLHttpRequest();
+            }
+            else{
+                // code for IE6, IE5
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange=function(){
+                if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                    resp = xmlhttp.responseText;
+                    document.getElementById("superlink__"+id).innerHTML= resp;
+                }
+            }
+
+            req = "superparam="+direction+"&id="+id+"&pcount="+pcount;
+            xmlhttp.open("GET",SPCurrentUrl()+"?"+req, true);
+            xmlhttp.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2000 00:00:00 GMT");
+            xmlhttp.send();
+        }
+    </script>
+{% endblock %}
+
+{% block body %}
+
+      <h1>{{title}}</h1>
+
+        <div class="available_block">
+            {% if search_available %}
+            <div id="admin_search_form">
+                    <input type="hidden" name="adminaction" value="search" /> 
+                    <input type="text"   id="admin_search_text" value="{{search_results.text}}" />
+                    <input type="button" value="Поиск" onclick="admin_search_request()"/>
+                    <br/>
+                    <input type="checkbox" id="admin_search_full" {% if search_results.full %}checked{% endif %} /> Точный поиск<br/>
+                    <input type="checkbox" id="admin_search_html" {% if search_results.html %}checked{% endif %} /> Поиск в HTML<br/>
+            </div>
+            {% endif %}
+            {{filter_menu}}
+        </div>
+        <div class="container">
+            {{filter_poslinks}}
+            <br/>
+            <div class="actionforms_box">
+                {% if admin_buttons.add     %}{{admin_buttons.add}}{% endif %}
+                {% if admin_buttons.refresh %}{{admin_buttons.refresh}}{% endif %}
+                {% if admin_buttons.trash   %}{{admin_buttons.trash}}{% endif %}
+                {% if images_fields %}
+                <button onclick=" document.getElementById('admin_resizer_box').style.display = document.getElementById('admin_resizer_box').style.display == 'none' ? 'block': 'none'; ">Изображения</button>
+                {% endif %}
+                <div id="admin_resizer_box" style="display: none; border: #0E3460 2px double;">
+                    <h3>Изменить размер изображений</h3>
+                    {% for ifield in images_fields %}
+                    <div>
+                        <div style="font-weight: bold;">{{ifield.name}}</div>
+                        <form action="{{admin_path}}/common/resizer.php" method="POST">
+                            <input type="hidden" name="table" value="{{current.table}}" />
+                            <input type="hidden" name="main_fld" value="{{current.main_fld}}" />
+                            <input type="hidden" name="history" value="{% if current.history %}1{% endif %}" />
+                            <input type="hidden" name="data"  value="{{ifield.serialized}}" />
+                            Что изменить:
+                            <table>
+                                
+                                <tr><td> 
+                                        {% for r in ifield.values.resizer %}<input type="radio" name="rname" value="{{r.resizer_name}}" />{{r.size.0}} x {{r.size.1}} <br/>
+                                        {% endfor %}
+                                    </td></tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="use_bigger" value="1"/> Использовать самые большие картинки<br/>
+                                        Новые ограничения размеров:<br/>
+                                        <input type="number" min="25" name="sizex"  value=""  style="width: 50px;" /> 
+                                        x 
+                                        <input type="number" min="25" name="sizey"  value="" style="width: 50px;" /> 
+                                        <input type="submit" value="&gt;&gt;" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    {% if !loop.last %}<hr>{% endif %}
+                    {% endfor %}
+                    <div style="font-size: 12px; color: gray;">
+                        <b style="color:red;">*</b> - не забудьте изменить исходный код страницы админки, иначе новые фотографии будут сохраняться с прежним размером.
+                    </div>
+                </div>
+            </div>
+            <br />
+            {{filter_table}}
+            <br />
+            {{filter_poslinks}}
+            <br/>
+            <div class="actionforms_box">
+                {% if admin_buttons.add     %}{{admin_buttons.add}}{% endif %}
+                {% if admin_buttons.refresh %}{{admin_buttons.refresh}}{% endif %}
+                {% if admin_buttons.trash   %}{{admin_buttons.trash}}{% endif %}
+            </div>
+        </div>
+      
+{% endblock %}

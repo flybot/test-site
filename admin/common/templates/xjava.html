@@ -1,0 +1,82 @@
+<script type="text/javascript">
+    xjava_links = new Array();
+
+    function xjava_dbg(text){
+        document.getElementById("xjava_dbg").innerHTML += text + "<br>";
+    }
+    function xjava_create_added(element_name){
+        mainlist = document.getElementById(element_name).options;
+        addlist  = '';
+        for(i=0; i<mainlist.length; i++){
+            if (mainlist[i].selected){
+                addlist += '<li><a href="javascript: xjava_del(\''+element_name+'\', '+mainlist[i].value+')">[x]</a> ';
+                if ( xjava_links[element_name] ){
+                    addlist += xjava_links[element_name].replace('{{value}}', mainlist[i].value).replace('{{text}}', mainlist[i].innerHTML);
+                }
+                else
+                    addlist += mainlist[i].innerHTML;
+                addlist +='</li>';
+            }
+        }
+        document.getElementById("xjava_added_"+element_name).innerHTML = addlist;
+        //xjava_dbg("added to "+xjava_links[element_name]);
+    }
+    function xjava_create_available(element_name){
+        mainlist = document.getElementById(element_name).options;
+        addlist  = '';
+        for(i=0; i<mainlist.length; i++){
+            if (!mainlist[i].selected)
+                addlist += '<li><a href="javascript: xjava_add(\''+element_name+'\', '+mainlist[i].value+')">'+mainlist[i].innerHTML+'</a></li>';
+        }
+        document.getElementById("xjava_available_"+element_name).innerHTML = addlist;
+    }
+    function xjava_add(element_name, value){
+        mainlist = document.getElementById(element_name).options;
+        for(i=0; i<mainlist.length; i++){
+            if (!mainlist[i].selected && mainlist[i].value==value)
+                mainlist[i].selected = 1;
+        }
+        xjava_init(element_name);
+    }
+    function xjava_del(element_name, value){
+        mainlist = document.getElementById(element_name).options;
+        for(i=0; i<mainlist.length; i++){
+            if (mainlist[i].selected && mainlist[i].value==value)
+                mainlist[i].selected = 0;
+        }
+        xjava_init(element_name);
+    }
+
+    function xjava_init(element_name){
+        xjava_create_added(element_name);
+        xjava_create_available(element_name);
+    }
+    function xjava_setlink(element_name, xjava_link){
+        if (xjava_link.length<3)
+            xjava_links[element_name] = 0;
+        else
+            xjava_links[element_name] = xjava_link;
+        //xjava_dbg("added to "+xjava_links[element_name]);
+    }
+</script>
+<style type="text/css">
+.xjava_added li, .xjava_available li {
+    list-style: none;
+}
+.xjava_added, .xjava_available {
+    width: 200px;
+}
+.xjava_available{
+    overflow-y: auto;
+    height: 150px;
+}
+.xjava_label_added, .xjava_label_available {
+    border-bottom: gray dashed 1px;
+    width: 200px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+</style>
+<div id="xjava_dbg">
+    
+</div>

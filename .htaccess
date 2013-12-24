@@ -1,0 +1,25 @@
+RewriteEngine On
+
+RewriteRule ^([\w]+)/([\w\d_-]+)$  /$1/$2/?%{QUERY_STRING} [R=301,L]
+RewriteRule ^([\w]+)/([\w\d_-]+)/$ /index.php?type=$1&child=$2&%{QUERY_STRING} [L]
+
+RewriteRule ^([\w]+)/([\w\d_-]+)/([\w\d_-]+)$  /$1/$2/$3/?%{QUERY_STRING} [R=301,L]
+RewriteRule ^([\w]+)/([\w\d_-]+)/([\w\d_-]+)/$ /index.php?type=$1&child=$2&param1=$3&%{QUERY_STRING} [L]
+
+RewriteRule ^([\w]+)/([\w\d_-]+)/([\w\d_-]+)/([\w\d_-]+)$  /$1/$2/$3/$4/?%{QUERY_STRING} [R=301,L]
+RewriteRule ^([\w]+)/([\w\d_-]+)/([\w\d_-]+)/([\w\d_-]+)/$ /index.php?type=$1&child=$2&param1=$3&param2=$4&%{QUERY_STRING} [L]
+
+RewriteRule ^([\w]+)/([\w\d_-]+)/([\w\d_-]+)/([\w\d_-]+)/([\w\d_-]+)$  /$1/$2/$3/$4/$5/?%{QUERY_STRING} [R=301,L]
+RewriteRule ^([\w]+)/([\w\d_-]+)/([\w\d_-]+)/([\w\d_-]+)/([\w\d_-]+)/$ /index.php?type=$1&child=$2&param1=$3&param2=$4&param3=$5&%{QUERY_STRING} [L]
+
+RewriteRule ^([\w]+)/([\w\d_-]+)/([\w\d_-]+)/([\w\d_-]+)/([\w\d_-]+)/([\w\d_-]+)$  /$1/$2/$3/$4/$5/$6/?%{QUERY_STRING} [R=301,L]
+RewriteRule ^([\w]+)/([\w\d_-]+)/([\w\d_-]+)/([\w\d_-]+)/([\w\d_-]+)/([\w\d_-]+)/$ /index.php?type=$1&child=$2&param1=$3&param2=$4&param3=$5&param4=$6&%{QUERY_STRING} [L]
+
+RewriteRule ^([\w]+)$ /$1/?%{QUERY_STRING} [R=301,L]
+RewriteRule ^([\w]+)/$ /index.php?type=$1&%{QUERY_STRING} [L]
+
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ index.php [NC,L]

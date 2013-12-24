@@ -1,0 +1,8 @@
+<!-- // 09.08.11 shevayura // -->
+<input id="{{name}}__search" type="text" class="xsearch" autocomplete="off"
+       onkeyup="showResult_xself('{{name}}', '{{field}}', '{{search_field}}', this.value)"
+       onfocus=  "gotFocus_xself('{{name}}', '{{field}}', '{{search_field}}', '')"/>
+<a href="javascript: refreshResult_xself('{{name}}', '{{field}}', '{{search_field}}', '')" class="xf5">F5</a>
+{{addform}}
+<div id="{{name}}__livesearch" class="suggestion_list"
+     onclick="gotFocus_xself('{{name}}', '{{field}}', '{{search_field}}', '');" ></div>
