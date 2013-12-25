@@ -88,6 +88,8 @@ if ( empty($_GET['child']) || ($_GET['child'] == 'filter')  || ($_GET['child'] =
 	$main_context['sidebar'] = null;
 	//на странице используем джава-скрипт
 	$main_context['page_footer'][] = '<script type="text/javascript" src="/templates/js/routes.js"></script>';
+	
+	$main_context['xpath'][] = array('name'=>'Список походов', 'link'=>'/routes');
 	return;
 }
 
@@ -115,6 +117,8 @@ if (( int ) $child == $child)
 		$h2o = new H2O ( dirname ( __FILE__ ) . "/card.html" );
 		$main_context ['content'] = $h2o->render ( $context );
 		$main_context['page_name'] = "Поход " . trim($row['name']);
+		$main_context['xpath'][] = array('name'=>'Список походов',  'link'=>'/routes');
+		$main_context['xpath'][] = array('name'=>'Карточка похода', 'link'=>'/routes/$child');
 	
 		return;
 	}

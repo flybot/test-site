@@ -46,6 +46,8 @@ else {
 menu_load();
 menu_autoselect();
 
+$main_context['xpath'] = array(array('name'=>'Главная', 'link'=>'/')); //хлебные крошки
+
 /*** Side bar ***/
 $sidebar = new H2O(dirname(__FILE__)."/templates/sidebar.html");
 $main_context['sidebar'] = $sidebar->render(sidebar_data());

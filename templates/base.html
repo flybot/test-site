@@ -82,10 +82,28 @@
 		<li><a href="/articles">Статьи</a></li>
 	</ul>	
 	</div>
+
+	<!-- Breadcrumbs -->
+	{% if xpath %}
+	<div class="col-xs-12 col-sm-12">  
+		<ul class="breadcrumb">  
+			{% for xpath_item in xpath %}
+  			<li>  
+    			{%if !loop.last %}
+    				<a href="{{xpath_item.link}}">{{xpath_item.name}}</a><span class="divider"></span>
+    			{% else %}
+    				{{xpath_item.name}}
+    			{% endif %}
+  			</li>  
+  			 {% endfor %}
+		</ul>  
+	</div>
+	{% endif %}
+	<!-- /Breadcrumbs -->
 	
     <div class="container">
       <div class="row row-offcanvas row-offcanvas-right">
-		
+	
         {% if sidebar %}
         <div class="col-xs-12 col-sm-9">
         	<br />

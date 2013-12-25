@@ -10,6 +10,7 @@ if (empty ( $_GET ['child'] )) {
 	$h2o = new H2O ( dirname ( __FILE__ ) . "/list.html" );
 	$main_context ['content'] = $h2o->render ( $context );
 	$main_context['page_name'] = "Список инструкторов";
+	$main_context['xpath'][] = array('name'=>'Список инструкторов', 'link'=>'/trainers');
 	
 	return;
 }
@@ -26,7 +27,9 @@ if (count ( $row )) {
 	$context['row'] = $row[0];
 	$h2o = new H2O ( dirname ( __FILE__ ) . "/card.html" );
 	$main_context ['content'] = $h2o->render ( $context );
-	$main_context['page_name'] = "инструктор " . trim($row[0]['name']);
+	$main_context['page_name'] = "инструктор " . trim($row[0]['name']);	
+	$main_context['xpath'][] = array('name'=>'Список инструкторов', 'link'=>'/trainers');
+	$main_context['xpath'][] = array('name'=>$row[0]['name'], 'link'=>'/trainers/'.$row[0]['id']);
 	
 	return;
 }

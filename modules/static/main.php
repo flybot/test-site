@@ -4,6 +4,9 @@ $main_context['description'] = $page['page_description'];
 $main_context['keywords'] = $page['page_keywords'];
 $main_context['page_name'] = $page['page_name'];
 
+$main_context['xpath'][] = array('name'=>$page['page_name'], 'link'=>'/'.$page['page_link']);
+
+
 /* SOCIAL */
 /*
 require_once $_SERVER['DOCUMENT_ROOT'].'/common/h2o/h2o.php';

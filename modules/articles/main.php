@@ -8,6 +8,7 @@ if( empty( $_GET['child']) ) {
 	
 	$h2o = new H2O(dirname(__FILE__)."/list_types.html");
 	$main_context['content'] =  $h2o->render($context);
+	$main_context['xpath'][] = array('name'=>'Статьи', 'link'=>'/articles');
 	return;
 }
 
@@ -26,6 +27,8 @@ if( empty($_GET['param1']) ) {
 		$h2o = new H2O(dirname(__FILE__)."/list_articles.html");
 		$main_context['content'] =  $h2o->render($context);
 		$main_context['page_name'] = "Список статей";
+		$main_context['xpath'][] = array('name'=>'Статьи', 'link'=>'/articles');
+		$main_context['xpath'][] = array('name'=>$article_type['name'], 'link'=>'/articles/' . $article_type['title']);
 	}
 	else {
 		error404();
@@ -42,6 +45,14 @@ if( !empty($row)) {
 	$h2o = new H2O(dirname(__FILE__)."/article.html");
 	$main_context['content'] =  $h2o->render($context);
 	$main_context['page_name'] = $row['title'];
+	
+	//выбираем название темы статей и ее краткое описание
+	$articles_theme = mysql_real_escape_string($_GET['child']);
+	$article_type = $mngrDB->mysqlGetOne("SELECT * FROM article_types WHERE title = '{$articles_theme}'");
+	//breadcrumbs
+	$main_context['xpath'][] = array('name'=>'Статьи', 'link'=>'/articles');
+	$main_context['xpath'][] = array('name'=>$article_type['name'], 'link'=>'/articles/' . $article_type['title']);
+	$main_context['xpath'][] = array('name'=>$row['name'], 'link'=>'/articles/'.$article_type['title'].'/'.$row['title']);
 }
 else {
 	error404();
