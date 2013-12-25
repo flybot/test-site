@@ -1,0 +1,25 @@
+Сортировать по:&nbsp;&nbsp; 
+{% for region in regions %}
+	<input type="checkbox" name="filter_region" class="filter_cb"
+		value="{{region.alias}}"{{region.selected}}>{{region.name}} &nbsp; 
+{% endfor %}
+
+<hr>
+
+{% for row in rows %}
+	<a href="/reviews/{{row.id}}"><h2>{{row.name}}</h2></a>
+	<div class="col-xs-12 col-sm-6">
+		<img src="{{row.image}}" style="width: 100%; height: 100%;" />
+	</div>
+	<div class="col-xs-12 col-sm-6">
+		Отзыв на поход: {{row.route_name}}
+		<br />
+		Автор: {{row.author}}
+		<br />
+		<br />
+		{{row.desc_short}}
+	</div>
+	<br />
+	<a href="/reviews/{{row.id}}">более подробно...</a>
+	<hr>
+{% endfor %}

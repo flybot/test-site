@@ -1,0 +1,24 @@
+<h2>{{row.name}}</h2>
+<br />
+<div class="row">
+	<div class="col-xs-12 col-sm-6">
+		<img src="{{row.image}}" style="width: 100%; height: 100%;" />
+	</div>
+	<div class="col-xs-12 col-sm-6">
+		Отзыв на поход: {{row.route_name}}
+		<br />
+		Автор: {{row.author}}
+		<br />
+		<br />
+		{{row.desc_short}}
+	</div>
+</div>
+<div class="row">
+    {{row.desc_long}}
+</div>
+
+<br />
+<div class="col-xs-12 col-sm-4">
+	<a href="#" class="btn btn-default btn-block">Заказать поход</a>
+</div>
+<br />

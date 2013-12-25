@@ -1,5 +1,7 @@
 <?php
 
+$context = array ();
+
 // список отзывов с возможной фильтрацией по регионам
 if ( empty($_GET['child']) || ($_GET['child'] == 'filter') ) 
 {
@@ -16,13 +18,13 @@ if ( empty($_GET['child']) || ($_GET['child'] == 'filter') )
 		$regions[$key]['selected'] = ( in_array($region['alias'], $filter) )? "checked" : "";
 		if( in_array($region['alias'], $filter) ){
 			if($where_filter_str != "") $where_filter_str .= " or ";
-			$where_filter_str .= "r.region_id = " . $region['id'];
+			$where_filter_str .= "rt.region_id = " . $region['id'];
 		}
 	}
 	if($where_filter_str != "") $where_filter_str = " and " . $where_filter_str;
 	$context['regions'] = $regions;
 	
-	$rows = $mngrDB->mysqlGet ("SELECT rv.*, rt.region_id FROM reviews rv, routes rt 
+	$rows = $mngrDB->mysqlGet ("SELECT rv.*, rt.region_id, rt.name as route_name FROM reviews rv, routes rt 
 								WHERE rv.route_id = rt.id {$where_filter_str} 
 								ORDER BY priority, created_at" );
 	$context['rows'] = $rows;
@@ -36,18 +38,25 @@ if ( empty($_GET['child']) || ($_GET['child'] == 'filter') )
 	
 	//на странице используем джава-скрипт
 	$main_context['page_footer'][] = '<script type="text/javascript" src="/templates/js/reviews.js"></script>';
-		
 	return;
 }
 
+$child = $_GET['child'];
 // ишем отзыв по названию и отдаем страницу
-$rows = $mngrDB->mysqlGet ("SELECT h.id as hike_id, h.date_start, h.date_finish, r.*, t.name as trainer
-		FROM hikes h, routes r, trainers t
-		WHERE h.route_id = r.id AND h.trainer_id = t.id AND h.id = {$child}" );
+$row = $mngrDB->mysqlGetOne("SELECT rv.*, rt.region_id, rt.name as route_name FROM reviews rv, routes rt 
+							WHERE rv.route_id = rt.id AND rv.id = {$child}" );
+	
 
-if (count ( $rows ))
+if (count ( $row ))
 {
-	$row = $rows[0];
+	$context['row'] = $row;
+	
+	$h2o = new H2O ( dirname ( __FILE__ ) . "/card.html" );
+	
+	$main_context ['content'] = $h2o->render ( $context );
+	$main_context['page_name'] = "Отзыв: " . trim($row['name']);
+	$main_context['xpath'][] = array('name'=>'Отзывы', 'link'=>'/reviews');
+	$main_context['xpath'][] = array('name'=>$row['name'], 'link'=>'/reviews/'.$child);
 	
 	return;
 }

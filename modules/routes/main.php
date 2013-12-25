@@ -99,15 +99,12 @@ $child = trim ( $_GET ['child'] );
 //по числовому номеру выводим карточку похода
 if (( int ) $child == $child) 
 {
-	$rows = $mngrDB->mysqlGet ("SELECT h.id as hike_id, h.date_start, h.date_finish, r.*, t.name as trainer
+	$row = $mngrDB->mysqlGetOne("SELECT h.id as hike_id, h.date_start, h.date_finish, r.*, t.name as trainer
 		FROM hikes h, routes r, trainers t
 		WHERE h.route_id = r.id AND h.trainer_id = t.id AND h.id = {$child}" );
 
-	if (count ( $rows )) 
+	if (count ( $row )) 
 	{
-		$row = $rows[0];
-		$context = array ();
-	
 		$row['complexity_txt'] = $complexity[$row['complexity']]['name'];
 		$date_start = new DateTime($row['date_start']);
 		$date_finish = new DateTime($row['date_finish']);
@@ -118,7 +115,7 @@ if (( int ) $child == $child)
 		$main_context ['content'] = $h2o->render ( $context );
 		$main_context['page_name'] = "Поход " . trim($row['name']);
 		$main_context['xpath'][] = array('name'=>'Список походов',  'link'=>'/routes');
-		$main_context['xpath'][] = array('name'=>'Карточка похода', 'link'=>'/routes/$child');
+		$main_context['xpath'][] = array('name'=>'Карточка похода', 'link'=>'/routes/'.$child);
 	
 		return;
 	}
