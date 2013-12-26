@@ -1,23 +1,34 @@
-<div class="col-xs-12 col-sm-9">
+<div class="row">
 	<h2>{{row.name}}</h2>
-	<img src="{{row.thumb}}" style="width:25%; height:25%;"/>
-	{{row.birthday}}
-    <br />
-    {{row.slogan}}
-    <br />
-    {{row.progress}}
-    <br />
-    {{row.text_short}}
-    <hr>
-    <br /> 
-	Каменты сквозные
+	<div class="col-xs-12 col-sm-5">
+		<img src="{{row.thumb}}" style="width:80%; height:80%;"/>
+	</div>
+	<div class="col-xs-12 col-sm-7">
+		<strong>Возраст (лет):</strong> {{row.birthday}}
+		<br />
+		<strong>Стаж (лет):</strong> {{row.experience}}
+		<br />
+		<strong>Кол-во походов:</strong>
+		<br />
+		<strong>Девиз:</strong> {{row.slogan}}
+		<br />
+		<strong>Достижения:</strong> {{row.progress}}
+		<br />
+		<strong>Походы с тренером: </strong>
+		<br />
+		<br />
+		<a href="#" class="btn btn-default btn-block">Заказать поход с инструктором</a>
+	</div>
 </div>
 
-<div class="col-xs-6 col-sm-3 sidebar-offcanvas">
-	<ul>
-		<li>Акция</li>
-		<li>Расписание походов</li>
-		<li>Последнее на сайте</li>
-		<li>Блок типов/регионов</li>
-	</ul>
+<div class="row">
+	<br />
+	<br />
+	<strong>Рассказ о себе:</strong>
+	<br />
+	<br />
+	{{row.text_long}}
 </div>
+<br />
+
+Каменты сквозные

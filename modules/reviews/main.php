@@ -26,7 +26,7 @@ if ( empty($_GET['child']) || ($_GET['child'] == 'filter') )
 	
 	$rows = $mngrDB->mysqlGet ("SELECT rv.*, rt.region_id, rt.name as route_name FROM reviews rv, routes rt 
 								WHERE rv.route_id = rt.id {$where_filter_str} 
-								ORDER BY priority, created_at" );
+								ORDER BY priority, id desc" );
 	$context['rows'] = $rows;
 	
 	

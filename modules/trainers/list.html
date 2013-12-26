@@ -1,24 +1,29 @@
-<div class="col-xs-12 col-sm-9">
+
 {% for row in rows %}
+<div class="row">
 	<a href="{{row.id}}">
 		<h2>{{row.name}}</h2>
 	</a>
-	<img src="{{row.thumb}}" style="width:25%; height:25%;"/>
-	{{row.birthday}}
-    <br />
-    {{row.slogan}}
-    <br />
-    <a href="{{row.id}}">Подробнее...</a>
+	<div class="col-xs-12 col-sm-6">
+		<img src="{{row.thumb}}" style="width:80%; height:80%;"/>
+	</div>
+	<div class="col-xs-12 col-sm-6">
+		<strong>Возраст (лет):</strong> {{row.birthday}}
+		<br />
+		<strong>Стаж (лет):</strong> {{row.experience}}
+		<br />
+		<strong>Кол-во походов:</strong>
+		<br />
+		<strong>Девиз:</strong> {{row.slogan}}
+		<br />
+		<strong>Достижения:</strong> {{row.progress}}
+		<br />
+		<strong>Рассказ о себе:</strong>
+		<br />
+		{{row.text_short}}
+		<a href="{{row.id}}">более подробно...</a>
+	</div>
     <hr>
-    <br /> 
+    <br />
+</div>
 {% endfor %}
-</div>
-
-<div class="col-xs-6 col-sm-3 sidebar-offcanvas">
-	<ul>
-		<li>Акция</li>
-		<li>Расписание походов</li>
-		<li>Последнее на сайте</li>
-		<li>Блок типов/регионов</li>
-	</ul>
-</div>

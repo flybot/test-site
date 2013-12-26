@@ -9,10 +9,10 @@
 {% for row in rows %}
 	<a href="/reviews/{{row.id}}"><h2>{{row.name}}</h2></a>
 	<div class="col-xs-12 col-sm-6">
-		<img src="{{row.image}}" style="width: 100%; height: 100%;" />
+		<a href="/reviews/{{row.id}}"><img src="{{row.image}}" style="width: 100%; height: 100%;" /></a>
 	</div>
 	<div class="col-xs-12 col-sm-6">
-		Отзыв на поход: {{row.route_name}}
+		Отзыв на поход: <a href="/routes/{{row.route_id}}">{{row.route_name}}</a>
 		<br />
 		Автор: {{row.author}}
 		<br />

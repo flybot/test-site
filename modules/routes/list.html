@@ -28,7 +28,7 @@
 
 <div class="col-xs-12 col-sm-9">
 	<div class="col-xs-12 col-sm-3">Сортировать по:</div>
-	<div class="col-xs-12 col-sm-3"> 
+	<div class="col-xs-12 col-sm-2"> 
 		<button class="btn btn-default btn-sort" type="button" id="sort_date_start">
 			дате&nbsp;
 			{% if sort_name == 'date_start' %}
@@ -36,7 +36,7 @@
 			{% endif %}
 		</button>
 	</div>
-	<div class="col-xs-12 col-sm-3">
+	<div class="col-xs-12 col-sm-2">
 		<button class="btn btn-default btn-sort" type="button" id="sort_complexity">
 			сложности&nbsp;
 			{% if sort_name == 'complexity' %}
@@ -44,7 +44,7 @@
 			{% endif %}
 		</button>
 	</div>
-	<div class="col-xs-12 col-sm-3">
+	<div class="col-xs-12 col-sm-2">
 		<button class="btn btn-default btn-sort" type="button" id="sort_popularity">
 			популярности&nbsp;
 			{% if sort_name == 'popularity' %}
@@ -52,6 +52,15 @@
 			{% endif %}
 		</button>
 	</div>
+	<div class="col-xs-12 col-sm-2">
+		<button class="btn btn-default btn-sort" type="button" id="sort_cost_grn">
+			стоимости&nbsp;
+			{% if sort_name == 'cost_grn' %}
+			<span class="glyphicon glyphicon-chevron-{{sort_order}}"></span>
+			{% endif %}
+		</button>
+	</div>
+	
 	<br />
 	<hr>
 	<br />

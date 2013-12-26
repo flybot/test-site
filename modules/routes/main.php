@@ -30,14 +30,20 @@ if ( empty($_GET['child']) || ($_GET['child'] == 'filter')  || ($_GET['child'] =
 		$order = str_replace('-', ' ', $_GET['param3']); 
 	}
 
-	$where_filter_str = "";
+	$where_filter_str = ""; // строка фильтра БД
+	$page_title_str = "";   // формируем заголовок страницы
+	
 	//формируем список регионов
 	$regions =  $mngrDB->mysqlGet("SELECT * FROM regions");
 	foreach($regions as $key => $region) {
 		$regions[$key]['selected'] = ( in_array($region['alias'], $filter) )? "checked" : "";
-		if( in_array($region['alias'], $filter) ){
+		if( in_array($region['alias'], $filter) )
+		{
 			if($where_filter_str != "") $where_filter_str .= " or ";
 			$where_filter_str .= "r.region_id = " . $region['id'];
+			
+			if($page_title_str != "") $page_title_str .= ", ";
+			$page_title_str .= $region['name'];
 		}
 	}
 	if($where_filter_str != "") $where_filter_str = " and " . $where_filter_str;
@@ -83,7 +89,13 @@ if ( empty($_GET['child']) || ($_GET['child'] == 'filter')  || ($_GET['child'] =
 	
 	$h2o = new H2O ( dirname ( __FILE__ ) . "/list.html" );
 	$main_context['content'] = $h2o->render ( $context );
-	$main_context['page_name'] = "Список походов";
+	//заголовок страницы
+	if($page_title_str != "") {
+		$main_context['page_name'] = "Походы по регионам: " . $page_title_str;
+	}
+	else { // нет фильтра
+		$main_context['page_name'] = "Список походов";
+	}
 	//на этой странице сайдбар не нужен, отключаем
 	$main_context['sidebar'] = null;
 	//на странице используем джава-скрипт
@@ -99,7 +111,7 @@ $child = trim ( $_GET ['child'] );
 //по числовому номеру выводим карточку похода
 if (( int ) $child == $child) 
 {
-	$row = $mngrDB->mysqlGetOne("SELECT h.id as hike_id, h.date_start, h.date_finish, r.*, t.name as trainer
+	$row = $mngrDB->mysqlGetOne("SELECT h.id as hike_id, h.date_start, h.date_finish, h.trainer_id, r.*, t.name as trainer
 		FROM hikes h, routes r, trainers t
 		WHERE h.route_id = r.id AND h.trainer_id = t.id AND h.id = {$child}" );
 
