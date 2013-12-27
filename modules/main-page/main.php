@@ -13,7 +13,8 @@ $main_context['page_footer'][] = '<script>$(document).ready(function() { $("#roo
 $tmpl1 = new H2O(dirname(__FILE__)."/five-steps.html");
 $context['steps'] = $tmpl1->render();
 
-$context['reviews'] = 'Отзывы';
+$reviews = $mngrDB->mysqlGet("SELECT * FROM reviews WHERE show_on_main_page=1 ORDER BY priority");
+$context['reviews'] = $reviews;
 
 $tmpl2 = new H2O(dirname(__FILE__)."/why-not.html");
 $context['why-not'] = $tmpl2->render();

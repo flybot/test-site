@@ -5,9 +5,15 @@
 function sidebar_data() {
 	global $main_context, $mngrDB;
 	$data = array();
+	//акция
+	$row = $mngrDB->mysqlGetOne("SELECT * FROM actions WHERE `visible` = 1 AND date_end >= NOW() ORDER BY id");
+	if($row){
+		$data['action'] = $row;
+	}
 	//список инструкторов
 	$rows = $mngrDB->mysqlGet("SELECT * FROM trainers WHERE `show_on_main_page` = 1 ORDER BY `priority` ASC");
 	$data['trainers'] = (count($rows))? $rows : array();
+	//
 	return $data;
 }
 
