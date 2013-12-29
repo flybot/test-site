@@ -8,3 +8,5 @@ $dbpasswd = 'root';
 
 $VK_APP_ID = '3439493';
 $FB_APP_ID = '345006278878821';
+
+$admin_email = 'flybots@gmail.com';

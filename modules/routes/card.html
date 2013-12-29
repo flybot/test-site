@@ -2,7 +2,10 @@
 <br />
 <div class="row">
 	<div class="col-xs-12 col-sm-5">
-		<img src="{{row.thumb}}" style="width:100%; height:100%;"/>
+		<a href="{{row.thumb}}" data-lightbox="{{row.thumb}}" title="{{row.name}}">
+			<img src="{{row.thumb}}" style="width:100%; height:100%;"/>
+		</a>
+		
 	</div>
 
 	<div class="col-xs-12 col-sm-7">
@@ -17,7 +20,7 @@
 </div>
 <div class="row">
 	<br />
-	<a href="#" class="btn btn-default btn-block">Заказать поход</a>
+	<a href="/order?hikes={{row.id}}" class="btn btn-default btn-block">Заказать поход</a>
 	<br>
     {{row.descr_short}}
     <br /> 

@@ -46,16 +46,19 @@
 
 
 
-
-
-
-
-
 <br />
 <hr />
 <!-- содержимое why-not.html -->
 <h3>{{why-not}}</h3>
 <br />
 <!-- comment -->
-<h3>{{nearest-routes}}</h3>
-
+<h3>Ближайшие походы</h3>
+{% for route in hikes %}
+ <h4>{{route.name}}</h4>
+ {{route.date_start}} - {{route.date_finish}}
+ <br />
+ <img src="{{route.thumb}}">
+ <br>
+ {{route.descr_short}}
+ <br />
+{% endfor %}  

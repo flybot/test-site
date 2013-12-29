@@ -129,6 +129,9 @@ if (( int ) $child == $child)
 		$main_context['xpath'][] = array('name'=>'Список походов',  'link'=>'/routes');
 		$main_context['xpath'][] = array('name'=>'Карточка похода', 'link'=>'/routes/'.$child);
 	
+		$main_context['page_head'][] = '<link rel="stylesheet" type="text/css" href="/templates/css/lightbox.css">';
+		$main_context['page_footer'][] = '<script type="text/javascript" src="/templates/js/lightbox-2.6.min.js"></script>';
+		
 		return;
 	}
 }

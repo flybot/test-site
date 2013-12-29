@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 25, 2013 at 11:29 PM
+-- Generation Time: Dec 27, 2013 at 11:21 PM
 -- Server version: 5.5.34-0ubuntu0.13.10.1
 -- PHP Version: 5.5.3-1ubuntu2.1
 
@@ -23,6 +23,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `actions`
+--
+
+DROP TABLE IF EXISTS `actions`;
+CREATE TABLE IF NOT EXISTS `actions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `date_end` date NOT NULL,
+  `visible` tinyint(1) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `image_p` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `actions`
+--
+
+INSERT INTO `actions` (`id`, `name`, `date_end`, `visible`, `image`, `image_p`) VALUES
+(1, 'Супер-акция к Новому Году!', '2013-12-31', 1, '/files/actions/1388055317_86.jpg', '/home/serg/www/localhost/files/actions/1388055317_86.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `adminauth`
 --
 
@@ -37,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `adminauth` (
   `agent` varchar(255) NOT NULL,
   `ip` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `adminauth`
@@ -47,7 +71,8 @@ INSERT INTO `adminauth` (`id`, `userid`, `hash`, `openid`, `expire`, `email`, `a
 (1, 1, 'e6bf29338b93ab1242bff079be9cdf99', 'J7PKdyc20GK+fYanFZKZlr7tKQc=', 1417936617, 'flybots@gmail.com', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0', '127.0.0.1'),
 (2, 1, 'e380e327b22ea712cc4717041dee14a6', '7rT+I+RN715c3HibWBX104mXRwI=', 1418322637, 'flybots@gmail.com', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:26.0) Gecko/20100101 Firefox/26.0', '127.0.0.1'),
 (3, 1, '34b78ed8754ec6c75148b618b55aac09', 'cH6+uFPSiElWyoQX2Q0XfatemLo=', 1418883331, 'flybots@gmail.com', 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:20.0) Gecko/20100101 Firefox/20.0', '127.0.0.1'),
-(4, 14, '41de3209129d3d73b74b783b054b06e4', 'qZJgsT/lh6sKoo70XDwsD1QTn8U=', 1419495193, 'flybots@gmail.com', 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:20.0) Gecko/20100101 Firefox/20.0', '::1');
+(4, 14, '41de3209129d3d73b74b783b054b06e4', 'qZJgsT/lh6sKoo70XDwsD1QTn8U=', 1419495193, 'flybots@gmail.com', 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:20.0) Gecko/20100101 Firefox/20.0', '::1'),
+(5, 14, '86960de7a41bcebe1712d46b69aa9569', 'NGDe2fhxoRu8JCtESr3d4nxlWMk=', 1419685764, 'flybots@gmail.com', 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:20.0) Gecko/20100101 Firefox/20.0', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -121,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `adminhistory` (
   PRIMARY KEY (`id`),
   KEY `table` (`table`),
   KEY `row_id` (`row_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=438 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=443 ;
 
 --
 -- Dumping data for table `adminhistory`
@@ -565,7 +590,12 @@ INSERT INTO `adminhistory` (`id`, `table`, `row_id`, `column`, `type`, `old_valu
 (434, 'reviews', 1, 'image_p', 'data', '/home/serg/www/localhost/files/slides/1387972866_19.jpeg', '/home/serg/www/localhost/files/reviews/1387972954_8.jpeg', '2013-12-25 12:02:34', 14),
 (435, 'reviews', 2, 'id', 'add_new', '', '2', '2013-12-25 12:10:09', 14),
 (436, 'menu', 3, 'url', 'data', '/review/crimea', '/reviews/filter/crimea', '2013-12-25 20:28:12', 1),
-(437, 'menu', 10, 'url', 'data', '/review/karpaty', '/reviews/filter/karpaty', '2013-12-25 20:28:35', 1);
+(437, 'menu', 10, 'url', 'data', '/review/karpaty', '/reviews/filter/karpaty', '2013-12-25 20:28:35', 1),
+(438, 'trainers', 1, 'text_short', 'data', '<p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">И так, родился я в Белой Церкви &ndash; небольшом, но и не маленьком городе, вблизи Киева. Сначала учился в обычной школе, потом в Белоцерковском экономико-правовом лицее, по окончанию которого поступил в КПИ на факультет ИЕЕ, специальность энергоменеджер (или как-то так).</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;text-decoration:none;">&nbsp;</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Уже на последних курсах понял &mdash;&nbsp; я настолько сильно люблю природу и горы, что обычная работа мне не подойдет. Нужно связать работу с хобби, так и появилась идея создания своего проекта. После окончания КПИ вернулся в родной город и пока живу тут. Что будет дальше? Поживем &ndash; увидим.</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;text-decoration:none;">&nbsp;</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">В настоящее время не женат, кроме туризма увлекаюсь спортом (турнички, футбол, капоейра...), сайтами, раньше очень много читал фентези, но в последнее время отдалился &ndash; нету столько времени. Или, может, уже перерос чтение развлекательных книг, если и читаю, то что-то полезное.</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;text-decoration:none;">&nbsp;</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Родители были альпинистами, но со временем переквалифицировались в туристов, подрабатывали инструкторами и брали нас с сестрой с собой в походы. В первый свой поход (Карпаты) я пошел в 9 лет, потом был небольшой перерыв и где-то с 11-12 по 3-4 похода каждый год. В основном Крым-Карпаты. Чуть позже&nbsp; добавился и Кавказ. В основном хожу в пешие или горные походы, но был и в парочке водных.</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;text-decoration:none;">&nbsp;</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Наши, украинские, горы чрезвычайно красивы, но Кавказ круче в разы! А ведь Крым, Карпаты и Кавказ &ndash; это лишь маленький кусочек нашей воистину прекрасной и необъятной планеты! Хочется увидеть все и побывать везде! Поэтому, одной из целей является парочка походов/поездок в новые страны каждый год. Пока есть возможность, позволяет здоровья, нужно брать от жизни максимум!</span></p>', '<p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Быть инструктором по туризму &ndash; значит жить своим делом. </span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Люди в походе собираются абсолютно незнакомые, из разных городов, часто противоречащим друг другу; разного возраста, физического уровня подготовки и т.д.</span></p>', '2013-12-26 07:57:39', 14),
+(439, 'adminmenu', 202, 'id', 'add_new', '', '202', '2013-12-26 10:49:33', 14),
+(440, 'actions', 1, 'id', 'add_new', '', '1', '2013-12-26 10:54:32', 14),
+(441, 'actions', 1, 'image', 'data', '/files/actions/1388055272_80.jpg', '/files/actions/1388055317_86.jpg', '2013-12-26 10:55:17', 14),
+(442, 'actions', 1, 'image_p', 'data', '/home/serg/www/localhost/files/actions/1388055272_80.jpg', '/home/serg/www/localhost/files/actions/1388055317_86.jpg', '2013-12-26 10:55:17', 14);
 
 -- --------------------------------------------------------
 
@@ -581,7 +611,7 @@ CREATE TABLE IF NOT EXISTS `adminlog` (
   `action` varchar(255) NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=255 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=260 ;
 
 --
 -- Dumping data for table `adminlog`
@@ -841,7 +871,12 @@ INSERT INTO `adminlog` (`id`, `admin`, `type`, `action`, `time`) VALUES
 (251, 14, 'add', 'Добавлены данные в reviews', '2013-12-25 12:10:09'),
 (252, 14, 'edit', 'Изменены данные в ''Отзывы'' с `id`=2', '2013-12-25 12:10:15'),
 (253, 1, 'edit', 'Изменены данные в ''Меню сайта'' с `id`=3', '2013-12-25 20:28:12'),
-(254, 1, 'edit', 'Изменены данные в ''Меню сайта'' с `id`=10', '2013-12-25 20:28:35');
+(254, 1, 'edit', 'Изменены данные в ''Меню сайта'' с `id`=10', '2013-12-25 20:28:35'),
+(255, 14, 'edit', 'Изменены данные в ''Инструкторы'' с `id`=1', '2013-12-26 07:57:39'),
+(256, 14, 'add', 'Добавлены данные в adminmenu', '2013-12-26 10:49:33'),
+(257, 14, 'add', 'Добавлены данные в actions', '2013-12-26 10:54:32'),
+(258, 14, 'edit', 'Изменены данные в ''Акции'' с `id`=1', '2013-12-26 10:55:17'),
+(259, 14, 'edit', 'Изменены данные в ''Акции'' с `id`=1', '2013-12-26 10:55:23');
 
 -- --------------------------------------------------------
 
@@ -859,7 +894,7 @@ CREATE TABLE IF NOT EXISTS `adminmenu` (
   `priority` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `parent` (`parent`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=202 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=203 ;
 
 --
 -- Dumping data for table `adminmenu`
@@ -886,7 +921,8 @@ INSERT INTO `adminmenu` (`id`, `parent`, `name`, `descr`, `url`, `priority`) VAL
 (194, 0, 'Статьи', '...', '/admin/articles/article.php', 51),
 (195, 194, 'Темы статей', 'Темы статей', '/admin/articles/types.php', 52),
 (196, 136, 'Слайды', 'слайды на главной странице', '/admin/slides/slides.php', 9),
-(201, 197, 'Отзывы', 'Отзывы клиентов', '/admin/reviews/main.php', 57);
+(201, 197, 'Отзывы', 'Отзывы клиентов', '/admin/reviews/main.php', 57),
+(202, 197, 'Акции', 'Акции для клиентов', '/admin/actions/main.php', 58);
 
 -- --------------------------------------------------------
 
@@ -1111,7 +1147,7 @@ CREATE TABLE IF NOT EXISTS `modules` (
 
 INSERT INTO `modules` (`id`, `name`, `dir`, `active`, `priority`) VALUES
 (1, 'Статические страницы', 'static', 1, 13),
-(8, 'news', 'news', 0, 9),
+(8, 'order', 'order', 1, 9),
 (9, 'reviews', 'reviews', 1, 7),
 (10, 'routes', 'routes', 1, 12),
 (15, 'trainers', 'trainers', 1, 11),
@@ -1310,7 +1346,7 @@ CREATE TABLE IF NOT EXISTS `trainers` (
 --
 
 INSERT INTO `trainers` (`id`, `name`, `birthday`, `practice`, `experience`, `slogan`, `progress`, `text_short`, `text_long`, `image`, `image_p`, `middle`, `middle_p`, `thumb`, `thumb_p`, `priority`, `show_on_main_page`) VALUES
-(1, 'Тарас Поздний', '1988-01-02', '2008-01-10', '2010-06-10', 'Вперед и только вперед!', 'не указано', '<p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">И так, родился я в Белой Церкви &ndash; небольшом, но и не маленьком городе, вблизи Киева. Сначала учился в обычной школе, потом в Белоцерковском экономико-правовом лицее, по окончанию которого поступил в КПИ на факультет ИЕЕ, специальность энергоменеджер (или как-то так).</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;text-decoration:none;">&nbsp;</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Уже на последних курсах понял &mdash;&nbsp; я настолько сильно люблю природу и горы, что обычная работа мне не подойдет. Нужно связать работу с хобби, так и появилась идея создания своего проекта. После окончания КПИ вернулся в родной город и пока живу тут. Что будет дальше? Поживем &ndash; увидим.</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;text-decoration:none;">&nbsp;</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">В настоящее время не женат, кроме туризма увлекаюсь спортом (турнички, футбол, капоейра...), сайтами, раньше очень много читал фентези, но в последнее время отдалился &ndash; нету столько времени. Или, может, уже перерос чтение развлекательных книг, если и читаю, то что-то полезное.</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;text-decoration:none;">&nbsp;</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Родители были альпинистами, но со временем переквалифицировались в туристов, подрабатывали инструкторами и брали нас с сестрой с собой в походы. В первый свой поход (Карпаты) я пошел в 9 лет, потом был небольшой перерыв и где-то с 11-12 по 3-4 похода каждый год. В основном Крым-Карпаты. Чуть позже&nbsp; добавился и Кавказ. В основном хожу в пешие или горные походы, но был и в парочке водных.</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;text-decoration:none;">&nbsp;</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Наши, украинские, горы чрезвычайно красивы, но Кавказ круче в разы! А ведь Крым, Карпаты и Кавказ &ndash; это лишь маленький кусочек нашей воистину прекрасной и необъятной планеты! Хочется увидеть все и побывать везде! Поэтому, одной из целей является парочка походов/поездок в новые страны каждый год. Пока есть возможность, позволяет здоровья, нужно брать от жизни максимум!</span></p>', '<p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">И так, родился я в Белой Церкви &ndash; небольшом, но и не маленьком городе, вблизи Киева. Сначала учился в обычной школе, потом в Белоцерковском экономико-правовом лицее, по окончанию которого поступил в КПИ на факультет ИЕЕ, специальность энергоменеджер (или как-то так).</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;text-decoration:none;">&nbsp;</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Уже на последних курсах понял &mdash;&nbsp; я настолько сильно люблю природу и горы, что обычная работа мне не подойдет. Нужно связать работу с хобби, так и появилась идея создания своего проекта. После окончания КПИ вернулся в родной город и пока живу тут. Что будет дальше? Поживем &ndash; увидим.</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;text-decoration:none;">&nbsp;</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">В настоящее время не женат, кроме туризма увлекаюсь спортом (турнички, футбол, капоейра...), сайтами, раньше очень много читал фентези, но в последнее время отдалился &ndash; нету столько времени. Или, может, уже перерос чтение развлекательных книг, если и читаю, то что-то полезное.</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;text-decoration:none;">&nbsp;</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Родители были альпинистами, но со временем переквалифицировались в туристов, подрабатывали инструкторами и брали нас с сестрой с собой в походы. В первый свой поход (Карпаты) я пошел в 9 лет, потом был небольшой перерыв и где-то с 11-12 по 3-4 похода каждый год. В основном Крым-Карпаты. Чуть позже&nbsp; добавился и Кавказ. В основном хожу в пешие или горные походы, но был и в парочке водных.</span></p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Наши, украинские, горы чрезвычайно красивы, но Кавказ круче в разы! А ведь Крым, Карпаты и Кавказ &ndash; это лишь маленький кусочек нашей воистину прекрасной и необъятной планеты! Хочется увидеть все и побывать везде! Поэтому, одной из целей является парочка походов/поездок в новые страны каждый год. Пока есть возможность, позволяет здоровья, нужно брать от жизни максимум!</span></p>', '', '', '/files/trainers/middle/1387313208_30.jpg', '/home/serg/www/localhost/files/trainers/middle/1387313208_30.jpg', '/files/trainers/thumb/1387313208_15.jpg', '/home/serg/www/localhost/files/trainers/thumb/1387313208_15.jpg', 0, 1),
+(1, 'Тарас Поздний', '1988-01-02', '2008-01-10', '2010-06-10', 'Вперед и только вперед!', 'не указано', '<p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Быть инструктором по туризму &ndash; значит жить своим делом. </span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Люди в походе собираются абсолютно незнакомые, из разных городов, часто противоречащим друг другу; разного возраста, физического уровня подготовки и т.д.</span></p>', '<p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">И так, родился я в Белой Церкви &ndash; небольшом, но и не маленьком городе, вблизи Киева. Сначала учился в обычной школе, потом в Белоцерковском экономико-правовом лицее, по окончанию которого поступил в КПИ на факультет ИЕЕ, специальность энергоменеджер (или как-то так).</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;text-decoration:none;">&nbsp;</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Уже на последних курсах понял &mdash;&nbsp; я настолько сильно люблю природу и горы, что обычная работа мне не подойдет. Нужно связать работу с хобби, так и появилась идея создания своего проекта. После окончания КПИ вернулся в родной город и пока живу тут. Что будет дальше? Поживем &ndash; увидим.</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;text-decoration:none;">&nbsp;</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">В настоящее время не женат, кроме туризма увлекаюсь спортом (турнички, футбол, капоейра...), сайтами, раньше очень много читал фентези, но в последнее время отдалился &ndash; нету столько времени. Или, может, уже перерос чтение развлекательных книг, если и читаю, то что-то полезное.</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;text-decoration:none;">&nbsp;</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Родители были альпинистами, но со временем переквалифицировались в туристов, подрабатывали инструкторами и брали нас с сестрой с собой в походы. В первый свой поход (Карпаты) я пошел в 9 лет, потом был небольшой перерыв и где-то с 11-12 по 3-4 похода каждый год. В основном Крым-Карпаты. Чуть позже&nbsp; добавился и Кавказ. В основном хожу в пешие или горные походы, но был и в парочке водных.</span></p><p style="text-align:left;">&nbsp;</p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Наши, украинские, горы чрезвычайно красивы, но Кавказ круче в разы! А ведь Крым, Карпаты и Кавказ &ndash; это лишь маленький кусочек нашей воистину прекрасной и необъятной планеты! Хочется увидеть все и побывать везде! Поэтому, одной из целей является парочка походов/поездок в новые страны каждый год. Пока есть возможность, позволяет здоровья, нужно брать от жизни максимум!</span></p>', '', '', '/files/trainers/middle/1387313208_30.jpg', '/home/serg/www/localhost/files/trainers/middle/1387313208_30.jpg', '/files/trainers/thumb/1387313208_15.jpg', '/home/serg/www/localhost/files/trainers/thumb/1387313208_15.jpg', 0, 1),
 (2, 'Диана Несмеяна', '1992-07-12', '2005-08-25', '2012-05-30', 'Солнце в ладонях, сердце в груди!', 'победила сама себя', '<p><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">И так, родился я в Белой Церкви &ndash; небольшом, но и не маленьком городе, вблизи Киева. Сначала учился в обычной школе, потом в Белоцерковском экономико-правовом лицее, по окончанию которого поступил в КПИ на факультет ИЕЕ, специальность энергоменеджер (или как-то так).</span></p>', '<p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Уже на последних курсах понял &mdash;&nbsp; я настолько сильно люблю природу и горы, что обычная работа мне не подойдет. Нужно связать работу с хобби, так и появилась идея создания своего проекта. После окончания КПИ вернулся в родной город и пока живу тут. Что будет дальше? Поживем &ndash; увидим.</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">В настоящее время не женат, кроме туризма увлекаюсь спортом (турнички, футбол, капоейра...), сайтами, раньше очень много читал фентези, но в последнее время отдалился &ndash; нету столько времени. Или, может, уже перерос чтение развлекательных книг, если и читаю, то что-то полезное.</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Родители были альпинистами, но со временем переквалифицировались в туристов, подрабатывали инструкторами и брали нас с сестрой с собой в походы. В первый свой поход (Карпаты) я пошел в 9 лет, потом был небольшой перерыв и где-то с 11-12 по 3-4 похода каждый год. В основном Крым-Карпаты. Чуть позже&nbsp; добавился и Кавказ. В основном хожу в пешие или горные походы, но был и в парочке водных.</span></p><p style="text-align:left;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Наши, украинские, горы чрезвычайно красивы, но Кавказ круче в разы! А ведь Крым, Карпаты и Кавказ &ndash; это лишь маленький кусочек нашей воистину прекрасной и необъятной планеты! Хочется увидеть все и побывать везде! Поэтому, одной из целей является парочка походов/поездок в новые страны каждый год. Пока есть возможность, позволяет здоровья, нужно брать от жизни максимум!</span></p>', '', '', '/files/trainers/middle/1387387313_31.png', '/home/serg/www/localhost/files/trainers/middle/1387387313_31.png', '/files/trainers/thumb/1387387313_17.png', '/home/serg/www/localhost/files/trainers/thumb/1387387313_17.png', 1, 1),
 (3, 'Инструктор №3', '1988-01-01', '2008-01-01', '2012-05-30', 'Вперед и только вперед!', 'победила сам себя и не испугался орла', '<p><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">И так, родился я в Белой Церкви &ndash; небольшом, но и не маленьком городе, вблизи Киева. Сначала учился в обычной школе, потом в Белоцерковском экономико-правовом лицее, по окончанию которого поступил в КПИ на факультет ИЕЕ, специальность энергоменеджер (или как-то так).</span></p>', '<p><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">И так, родился я в Белой Церкви &ndash; небольшом, но и не маленьком городе, вблизи Киева. Сначала учился в обычной школе, потом в Белоцерковском экономико-правовом лицее, по окончанию которого поступил в КПИ на факультет ИЕЕ, специальность энергоменеджер (или как-то так).</span></p><p><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">И так, родился я в Белой Церкви &ndash; небольшом, но и не маленьком городе, вблизи Киева. Сначала учился в обычной школе, потом в Белоцерковском экономико-правовом лицее, по окончанию которого поступил в КПИ на факультет ИЕЕ, специальность энергоменеджер (или как-то так).</span></span></p><p><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;"><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">И так, родился я в Белой Церкви &ndash; небольшом, но и не маленьком городе, вблизи Киева. Сначала учился в обычной школе, потом в Белоцерковском экономико-правовом лицее, по окончанию которого поступил в КПИ на факультет ИЕЕ, специальность энергоменеджер (или как-то так).</span></span></span></p>', '', '', '/files/trainers/middle/1387387394_86.png', '/home/serg/www/localhost/files/trainers/middle/1387387394_86.png', '/files/trainers/thumb/1387387394_75.png', '/home/serg/www/localhost/files/trainers/thumb/1387387394_75.png', 2, 1);
 

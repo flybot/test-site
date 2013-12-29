@@ -1,8 +1,8 @@
 <?php
 $context = array();
 //Загрузка слайдов из БД
-$rows = $mngrDB->mysqlGet("SELECT * FROM slides ORDER BY priority");
-$context['regions'] = $rows;
+$slides = $mngrDB->mysqlGet("SELECT * FROM slides ORDER BY priority");
+$context['regions'] = $slides;
 
 if(empty($main_context['page_footer'])) {
 	$main_context['page_footer'] = array();
@@ -19,7 +19,14 @@ $context['reviews'] = $reviews;
 $tmpl2 = new H2O(dirname(__FILE__)."/why-not.html");
 $context['why-not'] = $tmpl2->render();
 
-$context['nearest-routes'] = 'Ближайшие походы';
+$hikes_start_date = date('Y-m-d H:i:s', strtotime("+10 days"));
+$hikes = $mngrDB->mysqlGet(
+		"SELECT h.date_start, h.date_finish, r.* 
+		FROM hikes h, routes r
+		WHERE h.date_start > '{$hikes_start_date}'
+		ORDER BY h.date_start
+		LIMIT 0, 10");
+$context['hikes'] = $hikes;
 
 $h2o = new H2O(dirname(__FILE__)."/main-page.html");
 $main_context['content'] =  $h2o->render($context);

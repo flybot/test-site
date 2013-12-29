@@ -1,4 +1,21 @@
 <?php
+function processAjaxRequest($operation) {
+	global $main_context, $admin_email;
+	switch($operation) {
+		//участие в акции - отправка сообщений
+		case 'applyAction':
+			$data = array('name'=>$_GET['name'], 'tel'=>$_GET['tel']);
+			$mail_template = new H2O($main_context['base_path']."/templates/mail-action.html");
+			$mail_body = $mail_template->render($data);
+			$subject = "Участие в акции";
+			$rez1 = mail($_GET['email'], $subject, $mail_body);
+			$rez2 = mail($admin_email, $subject, $mail_body);
+			return (int)($rez1 && $rez2);
+			break;
+		
+	}
+}
+
 /*
  * Создание сайдбара
  */

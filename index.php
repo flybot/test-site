@@ -1,5 +1,4 @@
 <?php
-
 //create main context array
 $main_context = array();
 $main_context['global_server'] = $_SERVER;
@@ -20,6 +19,13 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/common/functions.php';
 
 if( ! empty($_GET['type']) ) {
 	$required = mysql_real_escape_string($_GET['type']);
+	
+	//обработка ajax-запросов
+	if($required == 'ajax' && !empty($_GET['child'])) {
+		echo processAjaxRequest($_GET['child']);
+		exit;
+	}
+	
 	// search module first
 	$_module = $mngrDB->mysqlGetOne("SELECT * FROM modules WHERE `active` = 1 AND dir = '{$required}'");
 	if(  count($_module) > 0 ) {
