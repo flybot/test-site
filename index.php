@@ -52,11 +52,15 @@ else {
 menu_load();
 menu_autoselect();
 
+require_once $_SERVER['DOCUMENT_ROOT']."/modules/comments/onload.php";
+
 $main_context['xpath'] = array(array('name'=>'Главная', 'link'=>'/')); //хлебные крошки
 
 /*** Side bar ***/
 $sidebar = new H2O(dirname(__FILE__)."/templates/sidebar.html");
 $main_context['sidebar'] = $sidebar->render(sidebar_data());
+//Загрузка слайдов из БД (в шапку страницы)
+$main_context['slides'] = $mngrDB->mysqlGet("SELECT * FROM slides ORDER BY priority");
 
 if($module) {
 	require_once $_SERVER['DOCUMENT_ROOT']."/modules/{$module}/main.php";

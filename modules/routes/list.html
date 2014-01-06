@@ -20,9 +20,30 @@
 	</ul>	
 	<h4>Дата старта</h4>
 	<ul>
-		<li>Август</li>
-		<li>Сентябрь</li>
-		<li>Октябрь</li>
+		<li>Весна</li>
+			<ul>
+				<li><input type="checkbox" name="filter_month" class="filter_cb" value="m3" {{months.3}}>Март</li>
+				<li><input type="checkbox" name="filter_month" class="filter_cb" value="m4" {{months.4}}>Апрель</li>
+				<li><input type="checkbox" name="filter_month" class="filter_cb" value="m5" {{months.5}}>Май</li>
+			</ul>
+		<li>Лето</li>
+			<ul>
+				<li><input type="checkbox" name="filter_month" class="filter_cb" value="m6" {{months.6}}>Июнь</li>
+				<li><input type="checkbox" name="filter_month" class="filter_cb" value="m7" {{months.7}}>Июль</li>
+				<li><input type="checkbox" name="filter_month" class="filter_cb" value="m8" {{months.8}}>Август</li>
+			</ul>
+		<li>Осень</li>
+			<ul>
+				<li><input type="checkbox" name="filter_month" class="filter_cb" value="m9" {{months.9}}>Сентябрь</li>
+				<li><input type="checkbox" name="filter_month" class="filter_cb" value="m10" {{months.10}}>Октябрь</li>
+				<li><input type="checkbox" name="filter_month" class="filter_cb" value="m11" {{months.11}}>Ноябрь</li>
+			</ul>
+		<li>Зима</li>
+			<ul>
+				<li><input type="checkbox" name="filter_month" class="filter_cb" value="m12" {{months.12}}>Декабрь</li>
+				<li><input type="checkbox" name="filter_month" class="filter_cb" value="m1" {{months.1}}>Январь</li>
+				<li><input type="checkbox" name="filter_month" class="filter_cb" value="m2" {{months.2}}>Февраль</li>
+			</ul>
 	</ul>
 </div>
 
@@ -65,8 +86,25 @@
 	<hr>
 	<br />
 {% for row in rows %}
-	<div class="col-xs-12 col-sm-2"><span class="label label-info">{{row.period}} дн.</span></div>
-	<div class="col-xs-12 col-sm-2"><span class="label label-info">{{row.distance}} км</span></div>
+	<div class="col-xs-12 col-sm-2">Даты</div>
+	<div class="col-xs-12 col-sm-1">Длит.</div>
+	<div class="col-xs-12 col-sm-1">Км.</div>
+	<div class="col-xs-12 col-sm-2">Сложность</div>
+	<div class="col-xs-12 col-sm-2">Стоимость</div>
+	<div class="col-xs-12 col-sm-2">Место старта</div>
+	<div class="col-xs-12 col-sm-2">Место финиша</div>
+	<br />
+	<div class="col-xs-12 col-sm-2">
+		<span class="label label-info">
+			<select id="period" name="period">
+			{% for period_item in row.period %}	
+				<option value="">{{period_item}}</option>
+			{% endfor %}
+			</select>
+		</span>
+	</div>
+	<div class="col-xs-12 col-sm-1"><span class="label label-info">{{row.duration}} дн.</span></div>
+	<div class="col-xs-12 col-sm-1"><span class="label label-info">{{row.distance}} км</span></div>
 	<div class="col-xs-12 col-sm-2"><span class="label label-info">{{row.complexity_txt}}</span></div>
 	<div class="col-xs-12 col-sm-2"><span class="label label-info">{{row.cost_grn}} грн / {{row.cost_rur}} руб / ${{row.cost_usd}}</span></div>
 	<div class="col-xs-12 col-sm-2"><span class="label label-info">{{row.start}}</span></div>

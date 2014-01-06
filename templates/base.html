@@ -64,10 +64,33 @@
       </div><!-- /.container -->
     </div><!-- /.navbar -->
 	
-	<div class="col-md-8 col-md-offset-1">
+	<div class="col-md-12">
+	<div class="col-xs-12 col-sm-6">
 		<div class="page-header">
   			<h1>КУЛУАР<br /> <small>путешествие начинается с первого шага</small></h1>
 		</div>
+	</div>
+	<div class="col-xs-12 col-sm-6">
+	<div id="slide-tabs">
+		<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container">
+				<ul>
+				{% for for slide in slides %}
+					<li><a href="#slide-tab-{{slide.id}}" data-toggle="tab">{{slide.name}}</a></li>
+				{% endfor %}
+				</ul>
+			</div>
+		</div>
+		</div>
+		<div class="tab-content">
+		{% for for slide in slides %}
+			<div class="tab-pane" id="slide-tab-{{slide.id}}">
+				<img src="{{slide.image}}" style="width:25%; height:25%;" />
+			</div>
+		{% endfor %}
+		</div>
+	</div>
 	</div>
 
 	<div class="col-md-11">
@@ -189,6 +212,7 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script src="/templates/js/jquery.bootstrap.wizard.min.js"></script>
 	<script src="/templates/js/common.js"></script>
 	{% for item in page_footer %}
         {{item}}

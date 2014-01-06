@@ -89,7 +89,7 @@ $admin->filter->AddField("Текст",          'page_text',              0, '',
 $admin->filter->AddField("Description",    'page_description',       1, '', null,   False, 1, 1);
 $admin->filter->AddField("Keywords",       'page_keywords',          1, '', null,   False, 1, 1);
 //$admin->filter->AddField("CSS",            'css',                    1, '', null,   False);
-$admin->filter->AddField("Дата изм.",       'changes',               1, '', "xdate",   False);
+$admin->filter->AddField("Дата изм.",       'changed',               1, '', "xdate",   False);
 $admin->filter->AddField("Показ изм.",      'show_changes',          1, '', "xbool",   False);
 
 

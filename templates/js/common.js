@@ -17,3 +17,10 @@ function applyAction() {
 			}
 	);
 };
+
+
+
+$(document).ready(function() { 
+	$("#hike-tabs").bootstrapWizard();
+	$("#slide-tabs").bootstrapWizard();
+});

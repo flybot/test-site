@@ -9,7 +9,7 @@
 			 <optgroup label="{{region.name}}">
 			{% for route in routes %}
 			{% if region.id == route.region_id %}
-				<option value="{{route.id}}" {% if selected_route == route.id %}selected{% endif %}>{{route.name}}</option>
+				<option value="{{route.id}}" {% if route_id == route.id %}selected{% endif %}>{{route.name}}</option>
 			{% endif %}
 			{% endfor %}
 			 </optgroup>
@@ -21,8 +21,9 @@
     	<label for="date_start" class="col-sm-3 control-label">Дата *</label>
     	<div class="col-sm-6">
 			<select class="form-control" id="date_start" name="date_start">
-				<option value="d1">02-02-2014</option>
-				<option value="d2">15-04-2014</option>
+			{% for period in periods %}
+				<option value="{{period.hike_id}}" {% if selected_date == period.hike_id %}selected{% endif %}>{{period.hike_date}}</option>
+			{% endfor %}
 			</select>
     	</div>
   	</div>

@@ -38,11 +38,32 @@
 
 <!-- Tab panes -->
 <div class="tab-content">
-  <div class="tab-pane fade in active" id="descr">{{row.descr_long}}</div>
+  <div class="tab-pane fade in active" id="descr">
+  <!-- Описание походаs -->
+  	{{row.descr_long}}
+  </div>
   <!-- TODO: панель подготовка - уточнить, какое поле тут выводится -->
-  <div class="tab-pane" id="circs">{{row.descr_short}}</div>
-  <div class="tab-pane" id="preparation">{{row.preparation}}</div>
-  <div class="tab-pane" id="photos">{{row.photos}}</div>
-  <div class="tab-pane" id="videos">{{row.videos}}</div>
-  <div class="tab-pane" id="reviews">{{row.reviews}}</div>
+  <div class="tab-pane" id="circs">
+  <!-- Условия -->
+  	{{row.descr_short}}
+  </div>
+  <div class="tab-pane" id="preparation">
+  <!-- Подготовка к походу -->
+  {{row.preparation}}
+  </div>
+  <div class="tab-pane" id="photos">
+  <!-- Фото плиткой -->
+  {{row.photos}}
+  </div>
+  <div class="tab-pane" id="videos">
+  <!-- Вывод видео -->
+  {{row.videos}}
+  </div>
+  <div class="tab-pane" id="reviews">
+  <!-- Отзывы по походу -->
+  {{row.reviews}}
+  <div class="comments">
+  	{{row.comments}}
+  </div>
+  </div>
 </div>

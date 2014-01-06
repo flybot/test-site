@@ -1,13 +1,10 @@
 <?php
 $context = array();
-//Загрузка слайдов из БД
-$slides = $mngrDB->mysqlGet("SELECT * FROM slides ORDER BY priority");
-$context['regions'] = $slides;
 
 if(empty($main_context['page_footer'])) {
 	$main_context['page_footer'] = array();
 }
-$main_context['page_footer'][] = '<script src="/templates/js/jquery.bootstrap.wizard.min.js"></script>'; 
+//$main_context['page_footer'][] = '<script src="/templates/js/jquery.bootstrap.wizard.min.js"></script>'; 
 $main_context['page_footer'][] = '<script>$(document).ready(function() { $("#rootwizard").bootstrapWizard();});</script>';
 //5 шагов 
 $tmpl1 = new H2O(dirname(__FILE__)."/five-steps.html");

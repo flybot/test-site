@@ -1,6 +1,6 @@
 <?php
 function processAjaxRequest($operation) {
-	global $main_context, $admin_email;
+	global $mngrDB, $main_context, $admin_email;
 	switch($operation) {
 		//участие в акции - отправка сообщений
 		case 'applyAction':
@@ -12,7 +12,18 @@ function processAjaxRequest($operation) {
 			$rez2 = mail($admin_email, $subject, $mail_body);
 			return (int)($rez1 && $rez2);
 			break;
-		
+		//заказ похода - выбираем перечень дат для похода
+		case 'order_dates':
+			$result = array();
+			$periods = $mngrDB->mysqlGet("SELECT id, date_start, date_finish FROM hikes WHERE route_id = ".$_GET['id']." ORDER BY date_start");
+			foreach($periods as $period) {
+				$ds = new DateTime($period['date_start']);
+				$df = new DateTime($period['date_finish']);
+				$result[] = array('hike_id' => $period['id'], 'hike_date' => $ds->format('d.m') . ' - ' . $df->format('d.m'));
+			}
+			$result[] = array('hike_id' => 0, 'hike_date' => "Своя дата, укажу в комментариях");
+			echo json_encode($result);
+			break;
 	}
 }
 
@@ -23,14 +34,37 @@ function sidebar_data() {
 	global $main_context, $mngrDB;
 	$data = array();
 	//акция
-	$row = $mngrDB->mysqlGetOne("SELECT * FROM actions WHERE `visible` = 1 AND date_end >= NOW() ORDER BY id");
-	if($row){
-		$data['action'] = $row;
+	$actions = $mngrDB->mysqlGetOne("SELECT * FROM actions WHERE `visible` = 1 AND date_end >= NOW() ORDER BY id");
+	if($actions){
+		$data['action'] = $actions;
 	}
 	//список инструкторов
-	$rows = $mngrDB->mysqlGet("SELECT * FROM trainers WHERE `show_on_main_page` = 1 ORDER BY `priority` ASC");
-	$data['trainers'] = (count($rows))? $rows : array();
-	//
+	$trainers = $mngrDB->mysqlGet("SELECT * FROM trainers WHERE `show_on_main_page` = 1 ORDER BY `priority` ASC");
+	$data['trainers'] = (count($trainers))? $trainers : array();
+	//Вкладки
+	$tabs = $mngrDB->mysqlGet("SELECT * FROM tabs");
+	if(count($tabs)) {
+		foreach($tabs as $key=>$tab){
+			$tabs[$key]['hikes'] = $mngrDB->mysqlGet(
+					"SELECT DATE_FORMAT(h.date_start,'%d.%m') AS date_start, r.id, r.name, r.region_id, n.alias 
+					FROM hikes h, routes r, regions n 
+					WHERE h.route_id = r.id AND r.region_id = n.id AND r.region_id = " . $tab['region_id']);
+		}
+		$data['tabs'] = $tabs;
+	}
+	//Последнее на сайте
+	$data['last_items'] = $mngrDB->mysqlGet(
+	"SELECT * from
+	((SELECT page_name AS title, CONCAT('/', page_link) AS link, changed AS last_date
+	FROM `pages` ORDER BY changed DESC LIMIT 0, 5)
+	UNION
+	(SELECT name AS title, CONCAT('/routes/', id) AS link, changed AS last_date 
+	FROM `routes` ORDER BY changed DESC LIMIT 0, 5)
+	UNION
+	(SELECT name AS title, CONCAT('/reviews/', id) AS link, created_at AS last_date 
+	FROM `reviews` ORDER BY created_at DESC LIMIT 0, 5)) t
+ 	ORDER BY t.last_date DESC LIMIT 0, 5");
+
 	return $data;
 }
 

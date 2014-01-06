@@ -1,4 +1,5 @@
 
+	
 <!-- Social buttons -->
 <div class="span4 pull-center">
 	<a href="http://www.facebook.com" class="btn btn-facebook"><i class="icon-facebook"></i> | Facebook</a>
@@ -62,8 +63,33 @@
 <!-- Расписание походов -->
 <div class="list-group">
 	<h4>Расписание походов</h4>
-	<span class="list-group-item">Aaaaaaaaaaa</span> 
-	<span class="list-group-item">Bbbbbbbb</span> <span class="list-group-item">Ccccccccccc</span>
+	{% if tabs %}
+	<!-- http://vadimg.com/twitter-bootstrap-wizard-example/ -->
+	<div id="hike-tabs">
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container">
+				<ul>
+				{% for tab in tabs %}
+					<li><a href="#tab-{{tab.id}}" data-toggle="tab">{{tab.name}}</a></li>
+				{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="tab-content">
+		{% for tab in tabs %}
+			<div class="tab-pane" id="tab-{{tab.id}}">
+				<ul>
+				{% for hike in tab.hikes %}
+					<li>{{hike.date_start}}&nbsp;<a href="/routes/{{hike.id}}">{{hike.name}}</a></li>
+				{% endfor %}
+				</ul>
+			</div>
+		{% endfor %}
+	</div>
+	</div>
+	{% endif %}
 </div>
 <!-- /Расписание походов -->
 
@@ -83,4 +109,8 @@
 
 <div class="list-group">
 	<h4>Последнее на сайте:</h4>
+	{% for item in last_items %}
+		<a href="{{item.link}}">{{item.title}}</a>
+		<br>
+	{% endfor %}
 </div>

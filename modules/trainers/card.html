@@ -14,7 +14,11 @@
 		<br />
 		<strong>Достижения:</strong> {{row.progress}}
 		<br />
-		<strong>Походы с тренером: </strong>
+		<strong>Походы с инструктором: </strong>
+		<br />
+		{% for hike in row.hikes %}
+			{{hike.name}}:{{hike.period}} {{hike.cost_grn}} грн/{{hike.cost_rur}} руб/${{hike.cost_usd}}<br />
+		{% endfor %}
 		<br />
 		<br />
 		<a href="/order" class="btn btn-default btn-block">Заказать поход с инструктором</a>
@@ -31,4 +35,6 @@
 </div>
 <br />
 
-Каменты сквозные
+<div class="comments">
+  	{{row.comments}}
+</div>
