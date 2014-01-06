@@ -1,0 +1,26 @@
+<table width="100%" id="comments_form_table">
+    <tr>
+        <td colspan="2">
+            <span id="comments_text_counter">Ваш комментарий (не более 3000 символов) <span id="comments_text_counter_sub"></span></span>
+        </td>
+    </tr>
+    <tr>
+        <td style="width:82px;">
+            <img src="{{user.photo}}" alt="{{user.name}}" style="max-width: 80px; max-height: 80px;"/>
+        </td>
+        <td>
+            <input type="hidden" id="commentsAnswer" value="0" />
+            <textarea id="commentsText" onchange="commentsTextChange();" onkeyup="commentsTextChange();" onfocus="commentsTextFocus();"   onblur="commentsTextBlur()"></textarea>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <span style="color:#008ffd ; font-size: 12px;">
+                <img src="{{provider.icon}}" alt="{{user.provider}}" class= "comments_message_provider_logo" />
+                <a style="padding-right:14px;" href="{{user.profile}}" class="comments_message_name">{{user.name}}</a> | 
+                <a href="javascript: commentsLogout();" class="comments_logout">Выйти</a>
+            </span>
+            <input type="image" src="/modules/comments/images/comment.gif" style="float: right;" onclick="commentsComment();"/>
+        </td>
+    </tr>
+</table>

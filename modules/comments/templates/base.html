@@ -1,0 +1,254 @@
+<div id="comments_main">
+    {% if forcejquery %}
+    <script src="/modules/comments/templates/jquery-1.8.0.min.js"></script>
+    {% endif %}
+    <script>
+        comments_login_to_answer_current = 0;
+        comments_login_to_answer_process = 0;
+        comments_update_in_process = false;
+        function commentsWindowSize(){
+            var windowWidth  = 500;
+            var windowHeight = 300;
+            var windowLeft   = parseInt((screen.availWidth/2)  - (windowWidth/2));
+            var windowTop    = parseInt((screen.availHeight/2) - (windowHeight/2));
+            var windowSize   = "width=" + windowWidth + ",height=" + windowHeight + ",left=" + windowLeft+",top=" + windowTop + ",screenX=" + windowLeft + ",screenY=" + windowTop;
+            return windowSize;
+        }
+        function commentsHide(){
+            comments_update_in_process = true;
+            $("#comments_hide_block").css('position', 'absolute');
+            $("#comments_hide_block").css('display', 'block');
+            $("#comments_hide_block").css('background-color', 'gray');
+            $("#comments_hide_block").css('opacity', '0.4');
+            $("#comments_hide_block").css('filter', 'alpha(opacity=40)');
+            $("#comments_hide_block").offset($("#comments_parent_block").offset());
+            $("#comments_hide_block").height( $("#comments_parent_block").height()+10 );
+            $("#comments_hide_block").width(  $("#comments_parent_block").width()+10  );
+        }
+        function commentsShow(){
+            $("#comments_hide_block").css('display', 'none');
+            comments_update_in_process = false;
+        }
+        function commentsWait(wh){
+            setTimeout(function(){ if (!wh.closed) commentsWait(wh); else commentsUpdate();}, 1000);
+        }
+        function commentsLogin(provider){
+            commentsHide();
+            provider = encodeURIComponent(provider);
+            comm_url = "/index.php?type=comments&comments_action=login&provider="+provider;
+            commentsLoginWin = window.open(comm_url, 'Login', [commentsWindowSize()]);
+            commentsWait(commentsLoginWin);
+        }
+        function commentsLogout(){
+            commentsHide();
+            comm_url = "/index.php?type=comments&comments_action=logout";
+            commentsLogoutWin = window.open(comm_url, 'Logout', [commentsWindowSize()]);
+            commentsWait(commentsLogoutWin);
+        }
+
+        function commentsUpdate(){
+            $.ajax({
+                url: '/index.php?type=comments&comments_action=update&page_id={{page_id}}',
+                cache: false
+            }).done(function(data){commentsUpdateBlocks(data);});
+        }
+        function commentsUpdateList(){
+            $.ajax({
+                url: '/index.php?type=comments&comments_action=updatelist&page_id={{page_id}}',
+                cache: false
+            }).done(function(data){
+                commentsUpdateBlocks(data);
+                if( parseInt($('#commentsAnswer').val()) > 0 )
+                    commentsAnswer(parseInt($('#commentsAnswer').val()), true, true);
+
+            });
+        }
+
+        function commentsDelete(cid){
+            cid = parseInt(cid);
+            if (isNaN(cid) || cid < 1)
+                return;
+            $.ajax({
+                url: '/index.php?type=comments&comments_action=delete&page_id={{page_id}}&comment_id='+cid,
+                cache: false
+            }).done(function(data){commentsUpdateBlocks(data);});
+        }
+
+        function commentsUpdateBlocks(jsondata){
+            obj = jQuery.parseJSON(jsondata);
+            isnotify = false;
+            for (var b in obj){
+                cblock = document.getElementById("comments_"+b+"_block");
+                if (cblock) cblock.innerHTML = obj[b];
+                if (b == 'notify' && obj[b].length > 1) isnotify = true;
+            }
+            commentsShow();
+
+
+            if (obj['scrollToComment'])
+                $(window).scrollTop($('#comments_message_'+obj['scrollToComment']).position().top);
+            else
+                if (isnotify) $(window).scrollTop($('#comments_notify_block').position().top);
+
+            if (!comments_update_in_process && comments_login_to_answer_process && document.getElementById('commentsText')){
+                commentsAnswer(comments_login_to_answer_process, false, false);
+                $(window).scrollTop($("#comments_message_childs_"+comments_login_to_answer_process).offset().top);
+                comments_login_to_answer_current = 0;
+                comments_login_to_answer_process = 0;
+
+            }
+
+            commentsCount();
+        }
+
+        function commentsCount(){
+
+            messages_count = parseInt($("#comments_messages_count").val());
+            messages_count = !isNaN(messages_count) ? messages_count : 0;
+
+
+            $("#comments_messages_count_label").html( messages_count > 0 ? '('+messages_count+')' : '');
+        }
+
+        function commentsTextChange(){
+
+            cleft = 3000 - $("#commentsText").val().length;
+            if (cleft < 0){
+                $("#commentsText").val( $("#commentsText").val().substr(0, 3000));
+                cleft = 0;
+            }
+            $("#comments_text_counter_sub").html( cleft != 3000 ? "Осталось "+cleft+"." : "");
+        }
+
+        function commentsTextFocus(){
+            $("#commentsText").height(100);
+        }
+        function commentsTextBlur(){
+            if (!$("#commentsText").val()) $("#commentsText").height(50);
+        }
+
+        function commentsLoginToAnswer(cid){
+            clink = $('#comments_message_logintoanswer_'+cid);
+            comments_login_to_answer_current = cid;
+
+            $("#comments_login_to_answer_form").css('display', 'block');
+            $("#comments_login_to_answer_form").css('position', 'absolute');
+            $("#comments_login_to_answer_form").offset(clink.offset());
+
+        }
+        function commentsLoginAndAnswer(provider){
+            cid = parseInt(comments_login_to_answer_current);
+            cid = isNaN(cid)? 0 : cid;
+            comments_login_to_answer_current = 0;
+            comments_login_to_answer_process = cid;
+            commentsLogin(provider);
+        }
+
+        function commentsLoginToAnswerClose(){
+            $('#comments_login_to_answer_current').val(0);
+            $("#comments_login_to_answer_form").css('display', 'none');
+        }
+
+        function commentsComment(){
+            xtext = $.trim($('#commentsText').val());
+            if (!xtext) return;
+            xparent = parseInt($('#commentsAnswer').val());
+            xparent = isNaN(xparent) || !xparent ? 0 : xparent;
+            comm_url = "/index.php?type=comments";
+
+            commentsHide();
+            $.ajax({
+                type: "POST",
+                url: comm_url,
+                cache: false,
+                data: {
+                    comments_action: 'comment',
+                    page_id        : '{{page_id}}',
+                    parent         : xparent,
+                    text           : xtext,
+                    page_url       : window.location.pathname+window.location.search+window.location.hash,
+                    page_name      : '{{page_name|escape}}'
+                }
+            }).done( function(data){ commentsUpdateBlocks(data); });
+        }
+        function commentsAnswerCancel(){
+            cid = $('#commentsAnswer').val();
+            $('#comments_message_answer_'+cid).html('Ответить');
+            var el = $('#comments_message_childs_'+cid);
+            var form = $('#comments_form_table');
+            el.css('padding-top', 0);
+            form.css('position', 'relative');
+            form.offset($('#comments_form_block').offset());
+            form.css('width', '100%');
+            $('#commentsAnswer').val(0);
+        }
+        function commentsAnswer(cid, force, noscroll){
+            force    = force    === undefined ? false : true;
+            noscroll = noscroll === undefined ? false : true;
+            if (!force){
+                if (!$('#commentsText')) return;
+                canswer = $('#commentsAnswer').val();
+                if ($('#commentsAnswer').val() > 0){
+                    commentsAnswerCancel(cid);
+                    if (cid != canswer)
+                        commentsAnswer(cid);
+                    return;
+                }
+            }
+
+            var el = $('#comments_message_childs_'+cid);
+            var form = $('#comments_form_table');
+
+            if (!el) return;
+            $('#commentsAnswer').val(cid);
+            $('#commentsText').focus();
+            //place form
+            $('#comments_message_answer_'+cid).html('Отменить');
+
+            form.css('position', 'absolute');
+            form.offset(el.offset());
+            el.css('padding-top', form.height());
+            form.width(el.width());
+            if (!noscroll){
+                $(window).scrollTop($('#comments_message_answer_'+cid).offset().top);
+            }
+        }
+        function commentsStartDelay(delay, isfirst){
+            delay = parseInt(delay);
+            if (isNaN(delay) || delay < 10) return;
+            if (!isfirst){
+                commentsUpdateList();
+            }
+            setTimeout(function(){commentsStartDelay(delay, false);}, delay*1000);
+        }
+        function commentsShowComment(){
+            cid = window.location.toString().match(/comments_show=(\d+)/);
+            if (cid !== null && cid.length == 2){
+                comm_el = $("#comments_message_"+cid[1]);
+                if (!comm_el) return;
+                $(window).scrollTop(comm_el.offset().top);
+            }
+        }
+        $(document).ready(function(){
+            commentsStartDelay('{{reload_delay}}', true);
+            commentsShowComment();
+            commentsCount();
+        });
+    </script>
+    <div id="comments_hide_block" style="display:none; ">
+        <div id="comments_hidden_message" style="font-weight: bold;">Загрузка...</div>
+    </div>
+    <div id="comments_parent_block">
+        <div id="comments_notify_block">
+            {{xnotify}}
+        </div>
+
+        <div id="comments_form_block">
+            {{form}}
+        </div>
+        <div class="comments_count"> КОММЕНТАРИИ <span id="comments_messages_count_label"></span></div>
+        <div id="comments_list_block">
+            {{list}}
+        </div>
+    </div>
+</div>

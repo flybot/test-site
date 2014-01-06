@@ -1,0 +1,35 @@
+<div class="comments_message" id="comments_message_{{id}}">
+	
+        <div class="comments_message_photo">
+            <img src="{{photo}}" alt=""/>
+        </div>
+        
+        <div class="comments_message_cont">
+            <div class="comments_message_namelogo">
+                <img class="comments_message_provider_logo" src="{{logo}}" />
+                <a href="{{profile}}" class="comments_message_name">{{name}}</a>
+                <span class="comments_message_time">{{xdate}}</span>
+                <a href="#comments_message_{{id}}"><img class="comments_message_link" src="/modules/comments/images/link.png" alt="" /></a>
+            </div>
+            <div class="comments_message_text">
+                {{text}}
+            </div>
+        </div>
+ 
+    <div class="comments_message_answer">
+    	{% if user %}
+                <a id="comments_message_answer_{{id}}" href="javascript: commentsAnswer('{{id}}');"><img src="/modules/comments/images/answer.gif" alt="Ответить" /></a>
+                {% else %}
+                <a id="comments_message_logintoanswer_{{id}}" href="javascript: commentsLoginToAnswer('{{id}}');"><img src="/modules/comments/images/answer.gif" alt="Ответить" /></a>
+                {% endif %}
+                {% if delete %}
+                {% if user_id==user.id %}
+                <a class="comments_message_delete" href="javascript: commentsDelete('{{id}}');">[x]</a>
+                {% endif %}
+                {% endif %}
+      </div>
+      
+      <div class="comments_message_childs" id="comments_message_childs_{{id}}">
+      		 {{childs}}
+      </div> 	
+</div>

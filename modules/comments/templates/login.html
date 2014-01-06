@@ -1,0 +1,22 @@
+<span class="panel">Ответить через: </span>
+{% for p in providers %}
+
+<a href="javascript: commentsLogin('{{p.name}}');">
+    <img src="{{p.button}}" alt="Войти используя {{p.name}}"/>
+</a>
+
+{% endfor %}
+
+
+<div id="comments_login_to_answer_form" style="display: none;" class="comments_login_to_answer_form">
+	<p class="log_answer"> Ответить через:</p>
+    {% for p in providers %}
+    
+    <a href="javascript: commentsLoginAndAnswer('{{p.name}}');">
+        <img width="25px" height="25px" src="{{p.button}}" alt="Войти используя {{p.name}}"/>
+    </a>
+    {% endfor %}
+
+    <a href="javascript: commentsLoginToAnswerClose();" class="comments_login_to_answer_close"><img src="/modules/comments/images/close.png" alt="Закрыть" /> </a>
+</div>
+
