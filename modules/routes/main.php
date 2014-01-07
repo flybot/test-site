@@ -137,6 +137,8 @@ if (( int ) $child == $child)
 
 	if (count ( $row )) 
 	{
+		$photos = $mngrDB->mysqlGet("SELECT * FROM photo WHERE id IN (SELECT photo_id FROM route2photo WHERE route_id = {$child})");
+		$row['photos'] = $photos;
 		//connect comments module
 		$comments = new Comments("hike_".$row['id'], "Поход - ".$row['name']);
 		$row['comments'] = $comments->getFullPage();

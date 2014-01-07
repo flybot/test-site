@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 06, 2014 at 04:35 PM
+-- Generation Time: Jan 07, 2014 at 09:14 PM
 -- Server version: 5.5.34-0ubuntu0.13.10.1
 -- PHP Version: 5.5.3-1ubuntu2.1
 
@@ -146,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `adminhistory` (
   PRIMARY KEY (`id`),
   KEY `table` (`table`),
   KEY `row_id` (`row_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=450 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=487 ;
 
 --
 -- Dumping data for table `adminhistory`
@@ -602,7 +602,45 @@ INSERT INTO `adminhistory` (`id`, `table`, `row_id`, `column`, `type`, `old_valu
 (446, 'tabs', 2, 'id', 'add_new', '', '2', '2014-01-02 18:31:32', 1),
 (447, 'tabs', 3, 'id', 'add_new', '', '3', '2014-01-02 18:59:14', 1),
 (448, 'tabs', 4, 'id', 'add_new', '', '4', '2014-01-02 18:59:24', 1),
-(449, 'actions', 1, 'date_end', 'data', '2013-12-31', '2014-01-10', '2014-01-03 19:25:37', 1);
+(449, 'actions', 1, 'date_end', 'data', '2013-12-31', '2014-01-10', '2014-01-03 19:25:37', 1),
+(450, 'routes', 1, 'photos_x', 'mtm_add', '', '4', '2014-01-07 15:43:43', 1),
+(451, 'routes', 1, 'photos_x', 'mtm_add', '', '1', '2014-01-07 15:43:43', 1),
+(452, 'routes', 1, 'photos_x', 'mtm_add', '', '3', '2014-01-07 15:43:43', 1),
+(453, 'routes', 1, 'photos_x', 'mtm_delete', '3', '', '2014-01-07 15:44:12', 1),
+(454, 'photo', 5, 'id', 'add_new', '', '5', '2014-01-07 17:32:46', 1),
+(455, 'routes', 1, 'photos_x', 'mtm_add', '', '5', '2014-01-07 17:33:02', 1),
+(456, 'photo', 6, 'id', 'add_new', '', '6', '2014-01-07 18:30:15', 1),
+(457, 'photo', 5, 'id', 'delete_all', '5', '', '2014-01-07 18:31:41', 1),
+(458, 'photo', 5, 'desc', 'data', 'picture 3', '', '2014-01-07 18:31:41', 1),
+(459, 'photo', 5, 'thumb', 'data', '/files/routes/thumb/1389115966_13.jpg', '', '2014-01-07 18:31:41', 1),
+(460, 'photo', 5, 'thumb_p', 'data', '/home/serg/www/localhost/files/routes/thumb/1389115966_13.jpg', '', '2014-01-07 18:31:41', 1),
+(461, 'photo', 6, 'id', 'delete_all', '6', '', '2014-01-07 18:31:44', 1),
+(462, 'photo', 6, 'desc', 'data', 'description 6', '', '2014-01-07 18:31:44', 1),
+(463, 'photo', 6, 'original', 'data', '/files/routes/original/1389119415_5.jpg', '', '2014-01-07 18:31:44', 1),
+(464, 'photo', 6, 'original_p', 'data', '/home/serg/www/localhost/files/routes/original/1389119415_5.jpg', '', '2014-01-07 18:31:44', 1),
+(465, 'photo', 6, 'thumb', 'data', '/files/routes/thumb/1389119415_92.jpg', '', '2014-01-07 18:31:44', 1),
+(466, 'photo', 6, 'thumb_p', 'data', '/home/serg/www/localhost/files/routes/thumb/1389119415_92.jpg', '', '2014-01-07 18:31:44', 1),
+(467, 'photo', 7, 'id', 'add_new', '', '7', '2014-01-07 18:31:56', 1),
+(468, 'adminmenu', 204, 'id', 'add_new', '', '204', '2014-01-07 18:35:49', 1),
+(469, 'photo', 7, 'original', 'data', '/files/routes/original/1389119516_95.jpg', '', '2014-01-07 18:59:04', 1),
+(470, 'photo', 7, 'original_p', 'data', '/home/serg/www/localhost/files/routes/original/1389119516_95.jpg', '', '2014-01-07 18:59:04', 1),
+(471, 'photo', 7, 'thumb', 'data', '/files/routes/thumb/1389119516_70.jpg', '', '2014-01-07 18:59:04', 1);
+INSERT INTO `adminhistory` (`id`, `table`, `row_id`, `column`, `type`, `old_value`, `new_value`, `date`, `admin_id`) VALUES
+(472, 'photo', 7, 'thumb_p', 'data', '/home/serg/www/localhost/files/routes/thumb/1389119516_70.jpg', '', '2014-01-07 18:59:04', 1),
+(473, 'photo', 7, 'original', 'data', '', '/files/routes/original/1389121152_25.jpg', '2014-01-07 18:59:12', 1),
+(474, 'photo', 7, 'original_p', 'data', '', '/home/serg/www/localhost/files/routes/original/1389121152_25.jpg', '2014-01-07 18:59:12', 1),
+(475, 'photo', 7, 'thumb', 'data', '', '/files/routes/thumb/1389121152_35.jpg', '2014-01-07 18:59:12', 1),
+(476, 'photo', 7, 'thumb_p', 'data', '', '/home/serg/www/localhost/files/routes/thumb/1389121152_35.jpg', '2014-01-07 18:59:12', 1),
+(477, 'photo', 4, 'original', 'data', '/files/articles/1386787920_40.png', '', '2014-01-07 18:59:19', 1),
+(478, 'photo', 4, 'original_p', 'data', '/home/serg/www/localhost/files/articles/1386787920_40.png', '', '2014-01-07 18:59:19', 1),
+(479, 'photo', 4, 'thumb', 'data', '/files/articles/1386787920_40.png', '', '2014-01-07 18:59:19', 1),
+(480, 'photo', 4, 'thumb_p', 'data', '/home/serg/www/localhost/files/articles/1386787920_40.png', '', '2014-01-07 18:59:19', 1),
+(481, 'photo', 4, 'original', 'data', '', '/files/routes/original/1389121166_98.jpg', '2014-01-07 18:59:27', 1),
+(482, 'photo', 4, 'original_p', 'data', '', '/home/serg/www/localhost/files/routes/original/1389121166_98.jpg', '2014-01-07 18:59:27', 1),
+(483, 'photo', 4, 'thumb', 'data', '', '/files/routes/thumb/1389121167_85.jpg', '2014-01-07 18:59:27', 1),
+(484, 'photo', 4, 'thumb_p', 'data', '', '/home/serg/www/localhost/files/routes/thumb/1389121167_85.jpg', '2014-01-07 18:59:27', 1),
+(485, 'routes', 1, 'photos_x', 'mtm_delete', '5', '', '2014-01-07 19:03:38', 1),
+(486, 'routes', 1, 'photos_x', 'mtm_add', '', '7', '2014-01-07 19:03:38', 1);
 
 -- --------------------------------------------------------
 
@@ -618,7 +656,7 @@ CREATE TABLE IF NOT EXISTS `adminlog` (
   `action` varchar(255) NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=274 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=288 ;
 
 --
 -- Dumping data for table `adminlog`
@@ -897,7 +935,21 @@ INSERT INTO `adminlog` (`id`, `admin`, `type`, `action`, `time`) VALUES
 (270, 1, 'edit', 'Изменены данные в ''Слайды'' с `id`=4', '2014-01-02 20:52:26'),
 (271, 1, 'edit', 'Изменены данные в ''Слайды'' с `id`=1', '2014-01-02 20:52:31'),
 (272, 1, 'edit', 'Изменены данные в ''Акции'' с `id`=1', '2014-01-03 19:24:29'),
-(273, 1, 'edit', 'Изменены данные в ''Акции'' с `id`=1', '2014-01-03 19:25:37');
+(273, 1, 'edit', 'Изменены данные в ''Акции'' с `id`=1', '2014-01-03 19:25:37'),
+(274, 1, 'edit', 'Изменены данные в ''Маршруты'' с `id`=1', '2014-01-07 15:43:43'),
+(275, 1, 'edit', 'Изменены данные в ''Маршруты'' с `id`=1', '2014-01-07 15:44:12'),
+(276, 1, 'add', 'Добавлены данные в photo', '2014-01-07 17:32:46'),
+(277, 1, 'edit', 'Изменены данные в ''Маршруты'' с `id`=1', '2014-01-07 17:33:02'),
+(278, 1, 'add', 'Добавлены данные в photo', '2014-01-07 18:30:15'),
+(279, 1, 'delete', 'Удалена запись 5 из photo', '2014-01-07 18:31:41'),
+(280, 1, 'delete', 'Удалена запись 6 из photo', '2014-01-07 18:31:44'),
+(281, 1, 'add', 'Добавлены данные в photo', '2014-01-07 18:31:56'),
+(282, 1, 'add', 'Добавлены данные в adminmenu', '2014-01-07 18:35:49'),
+(283, 1, 'edit', 'Изменены данные в ''Фотографии'' с `id`=7', '2014-01-07 18:59:04'),
+(284, 1, 'edit', 'Изменены данные в ''Фотографии'' с `id`=7', '2014-01-07 18:59:12'),
+(285, 1, 'edit', 'Изменены данные в ''Фотографии'' с `id`=4', '2014-01-07 18:59:19'),
+(286, 1, 'edit', 'Изменены данные в ''Фотографии'' с `id`=4', '2014-01-07 18:59:27'),
+(287, 1, 'edit', 'Изменены данные в ''Маршруты'' с `id`=1', '2014-01-07 19:03:38');
 
 -- --------------------------------------------------------
 
@@ -915,7 +967,7 @@ CREATE TABLE IF NOT EXISTS `adminmenu` (
   `priority` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `parent` (`parent`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=204 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=205 ;
 
 --
 -- Dumping data for table `adminmenu`
@@ -944,7 +996,8 @@ INSERT INTO `adminmenu` (`id`, `parent`, `name`, `descr`, `url`, `priority`) VAL
 (196, 136, 'Слайды', 'слайды на главной странице', '/admin/slides/slides.php', 9),
 (201, 197, 'Отзывы', 'Отзывы клиентов', '/admin/reviews/main.php', 58),
 (202, 197, 'Акции', 'Акции для клиентов', '/admin/actions/main.php', 59),
-(203, 136, 'Вкладки', 'Вкладки', '/admin/slides/tabs.php', 57);
+(203, 136, 'Вкладки', 'Вкладки', '/admin/slides/tabs.php', 57),
+(204, 197, 'Фото маршрутов', 'Фото маршрутов', '/admin/routes/photo.php', 60);
 
 -- --------------------------------------------------------
 
@@ -1064,6 +1117,59 @@ INSERT INTO `article_types` (`id`, `name`, `text`, `title`, `descr`, `keywords`,
 (2, 'Особенности походной жизни', '<p><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Все о жизни в походе. Чем она отличается от обычной, что делать, что бы походы были в удовольствие, а не превращались в каторгу)</span></p>', 'pohod', '<p><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Все о жизни в походе. Чем она отличается от обычной, что делать, что бы походы были в удовольствие, а не превращались в каторгу)</sp', 'Особенности походной жизни', -3),
 (3, 'О снаряжении', '<p><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Все о туристическом снаряжении. Технологии, материалы, способы использования, новинки и тд..</span></p>', 'sn', '', 'туризм, снаряжение', 3),
 (4, 'Костер в походе', '<p><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Особенности походного костра, хитрости и тоноксти, которые помогут вам без проблем разжечь костер в любую погоду.</span></p>', 'koster', '<p><span style="font-family:Arial;font-size:16px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;">Особенности походного костра, хитрости и тоноксти, которые помогут вам без проблем разжечь костер в любую погоду.</span></p>', '', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments_messages`
+--
+
+DROP TABLE IF EXISTS `comments_messages`;
+CREATE TABLE IF NOT EXISTS `comments_messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `page_id` varchar(255) NOT NULL,
+  `page_name` varchar(255) NOT NULL,
+  `parent` int(11) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `moderate` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments_sessions`
+--
+
+DROP TABLE IF EXISTS `comments_sessions`;
+CREATE TABLE IF NOT EXISTS `comments_sessions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sid` varchar(32) NOT NULL,
+  `data` text NOT NULL,
+  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments_users`
+--
+
+DROP TABLE IF EXISTS `comments_users`;
+CREATE TABLE IF NOT EXISTS `comments_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `provider` varchar(255) NOT NULL,
+  `identifier` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `profile` varchar(255) NOT NULL,
+  `photo` varchar(255) NOT NULL,
+  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1213,6 +1319,33 @@ INSERT INTO `pages` (`id`, `page_name`, `page_text`, `page_description`, `page_k
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `photo`
+--
+
+DROP TABLE IF EXISTS `photo`;
+CREATE TABLE IF NOT EXISTS `photo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `desc` varchar(255) NOT NULL,
+  `original` varchar(255) NOT NULL,
+  `original_p` varchar(255) NOT NULL,
+  `thumb` varchar(255) NOT NULL,
+  `thumb_p` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `photo`
+--
+
+INSERT INTO `photo` (`id`, `desc`, `original`, `original_p`, `thumb`, `thumb_p`) VALUES
+(1, '', '/files/articles/1386786760_63.jpg', '/home/serg/www/localhost/files/articles/1386786760_63.jpg', '/files/articles/1386786760_63.jpg', '/home/serg/www/localhost/files/articles/1386786760_63.jpg'),
+(3, '', '/files/articles/1386787920_40.png', '/home/serg/www/localhost/files/articles/1386787920_40.png', '/files/articles/1386787920_40.png', '/home/serg/www/localhost/files/articles/1386787920_40.png'),
+(4, '', '/files/routes/original/1389121166_98.jpg', '/home/serg/www/localhost/files/routes/original/1389121166_98.jpg', '/files/routes/thumb/1389121167_85.jpg', '/home/serg/www/localhost/files/routes/thumb/1389121167_85.jpg'),
+(7, 'description 6', '/files/routes/original/1389121152_25.jpg', '/home/serg/www/localhost/files/routes/original/1389121152_25.jpg', '/files/routes/thumb/1389121152_35.jpg', '/home/serg/www/localhost/files/routes/thumb/1389121152_35.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `regions`
 --
 
@@ -1300,6 +1433,29 @@ INSERT INTO `reviews` (`id`, `name`, `route_id`, `author`, `image`, `image_p`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `route2photo`
+--
+
+DROP TABLE IF EXISTS `route2photo`;
+CREATE TABLE IF NOT EXISTS `route2photo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `route_id` int(11) NOT NULL,
+  `photo_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+
+--
+-- Dumping data for table `route2photo`
+--
+
+INSERT INTO `route2photo` (`id`, `route_id`, `photo_id`) VALUES
+(11, 1, 7),
+(10, 1, 4),
+(9, 1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `routes`
 --
 
@@ -1340,23 +1496,6 @@ INSERT INTO `routes` (`id`, `region_id`, `name`, `distance`, `complexity`, `popu
 (1, 1, 'Поход по горному Крыму - Долиной Привидений', 59, 3, 0, '<p>Пожалуй, это мой самый любимый маршрут из всех <strong>походов по горному Крыму</strong>. Он чрезвычайно насыщен, интересен и разнообразен. Мы пройдем по горным вершинам, спустимся &nbsp;в сказочный мир красивейших пещер, окунемся в атмосферу Долины привидений и средневековой крепости Фуна, а в конце спустимся к водопаду Джур-Джур &ndash; крупнейшему на полуострове. Пейзажи по сторонам будут постоянно меняться, так что далеко прятать фотоаппарат не придется=)) Поход подойдет как начинающим, так и более опытным туристам. Маршрут более чем универсален и его сложность можно менять по желанию группы. Если вы идете в первый раз &ndash; смело выбирайте этот тур, море приятных ощущений вам обеспечено!</p>', '<h2 style="text-align: justify;">План похода по горному Крыму:</h2><p><span style="color: #3366ff;"><strong><span style="font-size: 13pt;">1 день. Симферополь &ndash; нижнее плато Чатыр-Даг (7,6 км)</span></strong></span></p><p style="text-align: justify;"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;">Группа собирается на железнодорожном вокзале Симферополя, где все знакомятся, и инструктор раздает каждому его часть общего снаряжения и продуктов. Далее, садимся на троллейбус и едем в Сосновку, где и начнется пешая честь похода. Недалеко от трассы начинается Красная тропа, названная так из-за характерного красноватого цвета камня. Подъем по ней весьма не прост и придется попотеть, пока не поднимемся на нижнее плато Чатыр-Даг. На плато нас ждут две красивейшие пещеры &ndash; <a href="http://www.kuluarbc.com.ua/interesnye-mesta/emine-bair-hosar.html" target="_blank">Эмине-Баир-Хосар</a> и Мраморная, в которые все желающие могут сходить на экскурсию. На ночевку остановимся неподалеку от пещер.</span></span></p><p style="text-align: justify;"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;"><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/dolina/kvest11.jpg" style=""><img alt="у костра" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-dolina-kvest11-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/dolina/kvest9.jpg" style=""><img alt="идем по плато" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-dolina-kvest9-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/dolina/dolina15.jpg" style=""><img alt="В пещере Эмине-Баир-Хосар" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-dolina-dolina15-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a></span></span></p><p style="text-align: justify;"><span style="color: #3366ff;"><strong><span style="font-size: 13pt;">2 день. Ангар-Бурун &ndash; Кутузовские озера (8,2 км)</span></strong></span></p><p style="text-align: justify;"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;">Нижнее плато <a href="http://www.kuluarbc.com.ua/interesnye-mesta/chatur-dag.html" target="_blank">Чатыр-Дага</a> богато на пещеры, большинство из них &ndash; это вертикальные колодцы, но есть и много доступных без специального снаряжения. В парочку таких можно будет зайти по пути. Сегодня мы поднимемся на верхнее плато и на вершину Ангар-Бурун (1453 м), а если будет хватать сил и времени, то и на Эклизи-Бурун, высотой 1527 м. С обоих вершин открывается красивейший вид на Демерджи, Алушту и Бабуган яйлу. Налюбовавшись красотами и сделав парочку снимков на память, спускаемся к Кутозовским озерам, где и заночуем.</span></span></p><p style="text-align: justify;"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;"><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/dolina/kvest098.jpg" style=""><img alt="на пути к вершине" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-dolina-kvest098-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/dolina/dolina.JPG" style=""><img alt="Наслаждаемся пейзажами=))" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-dolina-dolina-200x150.JPG" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/dolina/dolina3.JPG" style=""><img alt="Вершина Эклизи-Бурун" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-dolina-dolina3-200x150.JPG" style="border: 1px solid #000000;" width="200" /></a></span></span></p><p style="text-align: justify;"><span style="color: #3366ff;"><strong><span style="font-size: 13pt;">3 день. Долина Привидений, Демерджи, Джурла (12,3 км)</span></strong></span></p><p style="text-align: justify;"><span style="font-size: 12pt;"><span style="font-family: times new roman,times;">Каждый, кто мало-мальски интересуется красотами природы, слышал (или уже бывал) о <a href="http://www.kuluarbc.com.ua/interesnye-mesta/dolina-prividenij.html" target="_blank">Долине Привидений</a> &ndash; одном из красивейших мест горного Крыма. Сегодня и мы побываем тут, но сначала зайдем на экскурсию в крепость Фуна &ndash; средневековое укрепление феодоритов, служившее для охраны торгового пути. На входе в долину растет знаменитое дерево Никулина, возле которого снималась &laquo;Кавказская пленница&raquo;. Пройдя Долину Привидений, поднимаемся к вершине южной Демерджи, с которой открывается просто превосходная панорама на ЮБК &ndash; от Судака и до Медведь-горы. Заночуем сегодня возле озера на стоянке Джурла, а если хватит времени, то пройдем немного дальше, к водопаду.</span></span></p><p style="text-align: justify;"><span style="font-size: 12pt;"><span style="font-family: times new roman,times;"><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/dolina/dolina13.jpg" style=""><img alt="Долина Привидений" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-dolina-dolina13-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/dolina/dolina14.jpg" style=""><img alt="На вершине Демерджи" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-dolina-dolina14-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/dolina/kvest17.JPG" style=""><img alt="скала Катерина" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-dolina-kvest17-200x150.JPG" style="border: 1px solid #000000;" width="200" /></a></span></span></p><p style="text-align: justify;"><span style="color: #3366ff;"><strong><span style="font-size: 13pt;">4 день. Водопад Джур-Джур, т/с Ай-Алексий (14 км)</span></strong></span></p><p style="text-align: justify;"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;">Быстро собираем лагерь, завтракаем и в путь! Сегодня нам нужно много пройти и много увидеть. Совсем рядом со стоянкой любуемся небольшим, но очень живописным водопадом <a href="http://www.kuluarbc.com.ua/interesnye-mesta/vodopad-dzhurla.html" target="_blank">Джурла</a>. Далее, по хорошей тропе топаем к самому полноводному водопаду Крыма &ndash; <a href="http://www.kuluarbc.com.ua/interesnye-mesta/vodopad-dzhur-dzhur.html">Джур-Джур</a>. Мощные струи реки Улу-Узень падают с 16-ти метрового уступа и это действительно впечатляющее зрелище! К сожалению, покупаться в водопаде не удастся, так как идет забор питьевой воды и купание запрещено. Вдоволь насмотревшись и сделав достаточное количество снимков идем к стоянке Ай-Алексий, где и заночуем.</span></span></p><p style="text-align: justify;"><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/dolina/kvest01.jpg" style=""><img alt="восход" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-dolina-kvest01-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a><span style="font-family: times new roman,times;"><span style="font-size: 12pt;"><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/dolina/dolina17.jpg" style=""><img alt="Водопад Джур-Джур" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-dolina-dolina17-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a></span></span><a href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/dolina/dolina9.JPG" rel="lightbox[]" target="_blank" title="Играем в валейбол на стоянке"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;"> </span></span></a><span style="font-family: times new roman,times;"><span style="font-size: 12pt;"><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/dolina/dolina7.JPG" style=""><img alt="Грибочки всегда хорошо))" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-dolina-dolina7-200x150.JPG" style="border: 1px solid #000000;" width="200" /></a></span></span></p><p style="text-align: justify;"><span style="color: #3366ff;"><strong><span style="font-size: 13pt;">5 день. Караби-яйла. Озеро Хун (10,9 км)</span></strong></span></p><p style="text-align: justify;"><span style="font-family: times new roman,times;">Основные достопримечательности этого похода по горному Крыму пройдены, но еще можно насладиться дикими пейзажами Караби яйлы. Плато просто пестрит от карстовых воронок и пещер-колодцев, но оно безводное и туристы там ходят не так часто. Мы же не спеша спускаемся к большому озеру Хун, где можно вдоволь накупаться и помыться.</span></p><p style="text-align: justify;"><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/dolina/kvest6.jpg" style=""><img alt="на дереве" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-dolina-kvest6-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur " href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/dolina/dolina16.jpg" style=""><img alt="Отдых на маршруте" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-dolina-dolina16-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/dolina/kvest15.JPG" style=""><img alt="возле озера" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-dolina-kvest15-200x150.JPG" style="border: 1px solid #000000;" width="200" /></a></p><p style="text-align: justify;"><span style="color: #3366ff;"><strong><span style="font-size: 13pt;">6 день. Рыбачье. Симферополь (6 км)</span></strong></span></p><p style="text-align: justify;"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;">До конца маршрута осталось всего ничего &ndash; спуститься в Рыбачье по дороге, идущей сквозь виноградники. Особенно хороша она осенью, когда виноград уже поспел. Постоянно останавливаешься, что бы скушать вкусную ягодку. Главное &ndash; знать меру, а то следующая ночь в поезде вам и вашим соседям покажется длинной:-) От Рыбачьего регулярно ходят маршрутки и добраться к Симферополю не составит проблем.</span></span></p>', '<p><span style="font-family: times new roman,times;"><span style="font-size: 12pt;">К вашему вниманию список обязательных и не очень вещей для зимнего похода. Он составлен опираясь на личный опыт и здравый смысл, поэтому&nbsp; начинающим туристам искренне советую его придерживаться. В случае, если вы не хотите брать что-то с данного списка или хотите взять что-то еще, обязательно посоветуйтесь с инструктором. </span></span></p><p><span style="font-family: times new roman,times;"><span style="font-size: 12pt;"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;">Статью о снаряжении для летнего похода можно прочитать тут:&nbsp;<a href="http://www.kuluarbc.com.ua/vse/chto-vzyat-v-pohod.html"> Что взять в поход? Список снаряжения для летнего похода.</a></span></span></span></span></p>', '', '<p><iframe class="youtube-player" frameborder="0" height="390" src="http://www.youtube.com/embed/http://www.youtube.com/v/Qmus9GchI-4?rel=0" title="YouTube video player" type="text/html" width="480"></iframe></p><p><iframe class="youtube-player" frameborder="0" height="390" src="http://www.youtube.com/embed/http://www.youtube.com/v/kzV7ZFGTy8s?rel=0" title="YouTube video player" type="text/html" width="480"></iframe></p>', '<p>Хорошо сходили)Погода,конечно,немного подвела,но как говорится:У природы нет плохой погоды.)Было мокро,сыро и холодно ,но это даже добавило какого то приключенческого духа.))Пейзажи неописуемые,особенно впечатляет,когда видишь как огромную гору &quot;сьедает&quot; еще более огромное облако,все кажется одновременно и очень маленьким и неописуемо большим,короче контрастов много.Вел нас человек-энциклопедия.))На протяжении всего маршрута наш проводник рассказывал нам обо всем что мы видели:о горах,травах,камнях,облаках буквально обо всем и это особенно запомнилось,т.к.поход оказался не только красивым но и полезным.Всем кто ни разу не был в горах или в походе вообще однозначно советую,это интересно и впечатляюще и по уровню подготовки в самый раз.))</p>', 1240, 4960, 150, 'Симферополь', 'Симферополь', '', '', '/files/routes/middle/1387310265_63.jpg', '/home/serg/www/localhost/files/routes/middle/1387310265_63.jpg', '/files/routes/thumb/1387310265_9.jpg', '/home/serg/www/localhost/files/routes/thumb/1387310265_9.jpg', '0000-00-00 00:00:00'),
 (2, 1, 'Туристический поход по Крыму – Пещерными городами Крыма ', 47, 0, 0, '<p style="text-align: justify;">Этот туристический поход в Крым не сложный и максимально насыщенный различными достопримечательностями. Он идеально подходит&nbsp; новичкам, так как на маршруте есть лишь незначительные перепады высот, не длительные переходы и много радиалок (экскурсий на легке, без рюкзака). В то же время? поход чрезвычайно интересен, ведь каждый день мы будем посещать новые пещерные города, таинственные каньоны, древние монастыри в отвесных скалах... Мы с головой погрузимся в историю и пропитаемся таинственным духом былых дней!</p><p style="text-align: justify;">Каждый просто обязан хоть раз в жизни увидеть пещерные города! Я считаю, что тот, кто их не видел &ndash; не видел Крыма! Так что прочь сомнения и присоединяйтесь к походу=))</p>', '<h2 style="text-align: justify;">План туристического похода по Крыму</h2><p><span style="color: #3366ff;"><strong><span style="font-size: 13pt;">1 день. Бахчисарай. Успенский монастырь. Радиалка Чуфут-Кале (6 км)</span></strong></span></p><p style="text-align: justify;"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;">Встреча участников происходит на Симферопольском ж/д вокзале, где все знакомятся и распределяется снаряжение. Далее едем в Бахчисарай &ndash; древнюю столицу Крымского ханства. Тут мы маршруткой подъедем почти к самому <a href="http://www.kuluarbc.com.ua/interesnye-mesta/uspenskij-monastyr-v-bakhchisarae.html" target="_blank">Успенскому монастырю</a>, возле которого находится источник с чистейшей родниковой водой.&nbsp; Пополняем запасы воды (в Крыму это всегда актуально, особенно в теплую пору года) и идем в <a href="http://www.kuluarbc.com.ua/interesnye-mesta/gorod-chufut-kale.html" target="_blank">пещерный город Чуфут-Кале</a> &ndash; один из красивейших и наиболее сохранившихся в Крыму! Ночуем на поляне, возле родника.</span></span></p><p style="text-align: justify;"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;"><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pecherni-goroda/pechernimy-gorodami12.JPG" style=""><img alt="Успенский монастырь" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pecherni-goroda-pechernimy-gorodami12-200x150.JPG" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pecherni-goroda/pechernimy-gorodami13.JPG" style=""><img alt="Чуфут-Кале" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pecherni-goroda-pechernimy-gorodami13-200x150.JPG" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pecherni-goroda/pechery4.JPG" style=""><img alt="на Чуфут-Кале" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pecherni-goroda-pechery4-225x150.JPG" style="border: 1px solid #000000;" width="225" /></a></span></span></p><p><span style="color: #3366ff;"><strong><span style="font-size: 13pt;">2 день. Караимское кладбище. Качи-Кальон. Алимова балка (11,7 км)</span></strong></span></p><p style="text-align: justify;"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;">Сегодняшний наш переход начнется с самого крупного тюркского захоронения в Европе &ndash; Караимского некрополиса.&nbsp; Здесь находится около 10&nbsp;000 надгробий. Идя древним кладбищем, погружаешься в атмосферу таинственности и невольно задумываешься о вечном. К обеду спустимся в каньон реки Качи, где прохладно даже самим жарким летом. Недалеко находится пещерный монастырь Качи-Кальон, что в переводе значит &laquo;Крестовый корабль&raquo;. Названием монастырь обязан форме скалы, изрезанной крестоподобными трещинами. Ночевать будем в Алимовой балке, именно здесь в свое время ночевал известный крымский разбойник Алим, почитаемый местными жителями не хуже Робин Гуда англичанами.</span></span></p><p><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pecherni-goroda/pechernimy-gorodami15.jpg" style=""><img alt="Караимское кладбище" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pecherni-goroda-pechernimy-gorodami15-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pecherni-goroda/pechery5.JPG" style=""><img alt="Кулуар =))" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pecherni-goroda-pechery5-225x150.JPG" style="border: 1px solid #000000;" width="225" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pecherni-goroda/pechery2.jpg" style=""><img alt="чудный восход" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pecherni-goroda-pechery2-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a> <strong><span style="color: #69593a;"><span style="font-size: 13pt;"> </span></span></strong></p><p><span style="color: #3366ff;"><strong><span style="font-size: 13pt;">3 день. Челтер-Коба. Сюйренская крепость (6,6 км)</span></strong></span></p><p style="text-align: justify;"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;">После довольно длинного утреннего перехода спустимся к реке Бельбек, на берегу которой расположено село Большое Садовое. Сразу за селом находится действующий пещерный монастырь Челтер-Коба. Осмотрим сам монастырь, желающие могут поставить свечку в молебне.&nbsp; Далее мы прогуляемся к Сюйренской крепости. Крепость находится на мысе Куле-Бурун и с трех сторон окружена отвесными скалами. Отсюда и название &laquo;Острая&raquo;. С мыса открывается красивейшая панорама на долину реки Бельбек, где и заночуем.</span></span></p><p><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pecherni-goroda/pechery7.JPG" style=""><img alt="Челтер-Коба" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pecherni-goroda-pechery7-225x150.JPG" style="border: 1px solid #000000;" width="225" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pecherni-goroda/pechery6.JPG" style=""><img alt="купаемся ))" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pecherni-goroda-pechery6-200x150.JPG" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pecherni-goroda/pechery10.JPG" style=""><img alt="мы и Сюйрень" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pecherni-goroda-pechery10-200x150.JPG" style="border: 1px solid #000000;" width="200" /></a></p><p><span style="color: #3366ff;"><strong><span style="font-size: 13pt;">4 день. Мангуп-Кале (10 км)</span></strong></span></p><p style="text-align: justify;"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;">По тропинке, ведущей вверх, через Каралезскую долину, направляемся к столице древнего княжества Феодоро &ndash; <a href="http://www.kuluarbc.com.ua/interesnye-mesta/mangup-kale.html" target="_blank">пещерному городу Мангуп-Кале</a>. На плато находится несколько источников воды, что делает его удобным для обитания. Конечно, древние люди уже не живут на Мангупе, но на смену им пришли хиппи&nbsp; и другие неформалы, живущие тут круглогодично. Само плато занимает довольно большую площадь и мы будем долго гулять по нему. Заночуем возле одного из источников. Внимательно следите за вещами, на Мангупе не редки случаи кражи!!</span></span></p><p><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pecherni-goroda/pechernimy-gorodami9.jpg" style=""><img alt="Пещерный город Мангуп-Кале" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pecherni-goroda-pechernimy-gorodami9-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pecherni-goroda/pechernimy-gorodami10.jpg" style=""><img alt="ворота Мангуп-Кале" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pecherni-goroda-pechernimy-gorodami10-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pecherni-goroda/pechery12.jpg" style=""><img alt="ночевка на Мангупе" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pecherni-goroda-pechery12-225x150.jpg" style="border: 1px solid #000000;" width="225" /></a> <strong><span style="color: #69593a;"><span style="font-size: 13pt;"> </span></span></strong></p><p><span style="color: #3366ff;"><strong><span style="font-size: 13pt;">5 день.&nbsp;Монастарь Шулдан, Челтер. Эски-Кермен&nbsp; (10 км)</span></strong></span></p><p style="text-align: justify;"><span style="font-size: 12pt;"><span style="font-family: times new roman,times;">Спускаемся с Мангупа к трасе, сразу за которой тропа идет вверх, к действующему монастырю Шулдан. Далее &nbsp;пройдем к еще одному монастырю, который постепенно оживает &ndash; это монастырь Челтер. После осмотра монастыря направляемся к самому красивому пещерному городу Крыма &ndash; <a href="http://www.kuluarbc.com.ua/interesnye-mesta/eski-kermen.html" target="_blank">Эски-Кермен.</a> Он находится на гигантском утесе, одиноко стоящем посреди поля.&nbsp; Гуляем по городу и его окрестностям (посещаем башню Кыз-Куле и храм Донаторов), а ближе к вечеру становимся на ночлег.</span></span></p><p><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pecherni-goroda/pechery13.JPG" style=""><img alt="Эски-Кермен" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pecherni-goroda-pechery13-225x150.JPG" style="border: 1px solid #000000;" width="225" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pecherni-goroda/pechernimy-gorodami2.JPG" style=""><img alt="Монастырь Шулдан" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pecherni-goroda-pechernimy-gorodami2-200x150.JPG" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pecherni-goroda/pechernimy-gorodami3.jpg" style=""><img alt="Горный Крым" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pecherni-goroda-pechernimy-gorodami3-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a> <strong><span style="color: #69593a;"><span style="font-size: 13pt;"> </span></span></strong></p><p><span style="color: #3366ff;"><strong><span style="font-size: 13pt;">6 день. с. Красный Мак (3 км)</span></strong></span></p><p style="text-align: justify;"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;">Со стоянки по хорошей дороге направляемся к селу Залесное или Красный Мак. Из села ходят автобусы на Бахчисарай, Севастополь и Симферополь, едем кому куда удобнее. На этом и заканчивается наш поход по пещерным городам Крыма.</span></span></p><h2>Условия похода:</h2><ul>\r\n<li>\r\n	Это настоящий <a href="http://www.kuluarbc.com.ua/pohody-krym/" target="_blank">пеший поход по Крыму</a> &ndash; мы идем с рюкзаками, еду готовим на костре, спим в палатках. Один из самых простых и насыщенных походов - множество древнейших пещерынх городов и крутых каньонов предстанут нашему взгляду!</li>\r\n<li>\r\n	Если у вас нет личного снаряжения, его можно взять на <a href="http://www.kuluarbc.com.ua/snaryaga/prokat.html" target="_blank">прокат</a>.</li>\r\n<li>\r\n	Действует система <a href="http://www.kuluarbc.com.ua/vse/skidki.html" target="_blank">скидкок</a>!</li>\r\n<li>\r\n	Деньги сдаются гиду в первый день похода. О порядке и способах оплаты можно почитать <a href="http://www.kuluarbc.com.ua/teh/poryadok-oplaty.html" target="_blank">тут</a>.</li>\r\n<li>\r\n	Не забудьте взять фотоаппарат и запас позитива &ndash; с нами всегда весело, надежно и интересно! <img alt="Улыбка" border="0" src="http://www.kuluarbc.com.ua/plugins/editors/jce/tiny_mce/plugins/emotions/img/smiley-smile.gif" title="Улыбка" /></li>\r\n<li>\r\n	Инструктор в зависимости от погодных условий и состояния группы имеет право вносить <a href="http://www.kuluarbc.com.ua/teh/izmenenija-v-marshrute.html" target="_blank">изменения в маршрут.</a></li>\r\n</ul>', '', '', '', '', 1250, 5000, 175, 'Симферополь', 'Севастополь', '', '', '/files/routes/middle/1387387694_46.jpg', '/home/serg/www/localhost/files/routes/middle/1387387694_46.jpg', '/files/routes/thumb/1387387694_19.jpg', '/home/serg/www/localhost/files/routes/thumb/1387387694_19.jpg', '0000-00-00 00:00:00'),
 (3, 2, 'Пеший поход в Крым – Дорога в маленький рай ', 30, 1, 0, '<p>Выдались свободные выходные? Так почему бы не пойти в <strong>пеший поход в Крым</strong>? Маршрут построен так, что всего за три дня вы прогуляетесь крымскими лесами, пройдете настоящий горный хребет, попутно подниметесь на парочку вершин. А уже на второй день мы выйдем к морю и заночуем на пляже, у самого уреза воды. Что может быть романтичнее? Кроме этого, насладимся достопримечательностями, которыми так богат мыс Караул-Оба и Новый Свет. Этот маленький поход по Крыму вы запомните на всю жизнь!</p>', '<h2 style="text-align: justify;">План пешего похода в Крым</h2><p><span style="color: #3366ff;"><strong><span style="font-size: 13pt;">1 день. Симферополь&ndash;Земляничное</span></strong><strong>&ndash;</strong><strong><span style="font-size: 13pt;">пер. Маски&ndash;т/с Ай-Серез (12,8 км)</span></strong></span></p><p style="text-align: justify;"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;">Как всегда, сбор группы на Симферопольском железнодорожном вокзале в 11 утра. Инструктор распределяет продукты, садимся на автобус и едем в Земляничное. Это небольшое горное село досталось нам в наследство от грозных кочевников, которые осели тут сотни лет назад. От села по хорошей грунтовой дороге поднимаемся к перевалу Маски, где можно сделать перекус. От перевала до уютной стоянки в березовой роще около двух часов ходьбы.</span></span></p><p style="text-align: justify;"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;"><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pohod-ray/pohod-ray1.jpg" style=""><img alt="мост на пути к Маски" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pohod-ray-pohod-ray1-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pohod-ray/pohod-ray.jpg" style=""><img alt="перевал маски" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pohod-ray-pohod-ray-192x150.jpg" style="border: 1px solid #000000;" width="192" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pohod-ray/pohod-ray2.jpg" style=""><img alt="Дорога к стоянке" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pohod-ray-pohod-ray2-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a></span></span></p><div style="text-align: justify;"><span style="color: #3366ff;"><strong><span style="font-size: 13pt;">2 день. Хребет Орта-Сырт &ndash; Веселое &ndash; бухта Кутлакская (10,4 км)</span></strong></span></div><p style="text-align: justify;"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;">От стоянки немного идем по лесной тропе и начинаем подниматься на перевал. Нам нужно набрать всего до двухсот метров, подъем небольшой, но немножко попотеть заставит. Зато в конце нас ждет щедрая награда &ndash; вершина Лялель-Оба и чудесные пейзажи с хребта Орта-Сырт. Надо сказать, что Орта-Сырт - это уникальный для Крыма горный хребет с крутыми обрывистыми склонами и небольшими скалами, преодоление которых не составит труда, но сделает наш путь еще интереснее. Хребет полностью голый, на нем не растут деревья, и ничто не будет мешать нам любоваться горными пейзажами. А любоваться действительно есть чем: слева открывается вид на Новый свет, Судак, мыс Меганом, впереди видно море, а справа теряются в тумане высочайшие горные массивы Крыма &ndash; Бабуган-яйла и плато Чатыр-Даг. Вдоль устья ручья по балке Су-Чаптран спускаемся в село Веселое. Спуск интересный, есть в меру сложные преграды, а в конце настоящий водопадик, под которым можно освежиться! Далее вдоль трассы идем к берегу моря, где и становимся лагерем.</span></span></p><p style="text-align: justify;"><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pohod-ray/pohod-ray3.jpg" style=""><img alt="хребет Орта-Сырт" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pohod-ray-pohod-ray3-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pohod-ray/pohod-ray4.jpg" style=""><img alt="небольшие скалы" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pohod-ray-pohod-ray4-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pohod-ray/pohod-ray5.jpg" style=""><img alt="стоянка на берегу моря" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pohod-ray-pohod-ray5-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a></p><div style="text-align: justify;"><span style="color: #3366ff;"><strong><span style="font-size: 13pt;">3 день. Мыс Караул-Оба &ndash; Новый свет (7 км)</span></strong></span></div><p style="text-align: justify;"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;">Если вчера было красиво, то сегодня будет безумно красиво! Новый свет с его мысами и бухточками по праву считается одним из красивейших мест Крыма. По мысу Караул-Оба идем по хорошей, маркированной тропе, постоянно останавливаясь, чтобы полюбоваться необычайной голубизной моря. Возможно, именно по нашей тропе, в древности ходили тавры, населявшие эти места.</span></span></p><p style="text-align: justify;"><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pohod-ray/pohod-ray6.jpg" style=""><img alt="мыс Сквозной" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pohod-ray-pohod-ray6-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pohod-ray/pohod-ray7.jpg" style=""><img alt="дорога по Караул-Оба" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pohod-ray-pohod-ray7-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a><a class="thumbnail highslide zoomin-cur" href="http://www.kuluarbc.com.ua/images/stories/pohodu-krum/pohod-ray/pohod-ray8.jpg" style=""><img alt="грот Голицина" height="150" src="http://www.kuluarbc.com.ua/images/stories/thumbnails/images-stories-pohodu-krum-pohod-ray-pohod-ray8-200x150.jpg" style="border: 1px solid #000000;" width="200" /></a></p><div style="text-align: justify;"><span style="font-family: times new roman,times;"><span style="font-size: 12pt;">В конце тропы пройдемся по всем известным и чрезвычайно популярным местам &ndash; тропа Голицина, Царский пляж, Разбойничья бухта и выйдем в Новый свет. На его месте в древности была деревня Парадиз. И действительно, Новый свет как маленький рай в укромном уголке Крыма. Из поселка можно напрямую уехать в Симферополь, можно - в Судак, а можно остаться еще на пару деньков, насладиться мягким климатом ЮБК. В Симферополь вы попадете часиков в 17-18, учитывайте это, когда будете покупать билеты назад. </span></span><br /><span style="font-family: times new roman,times;">Этот пеший поход в Крым вы запомните на всю жизнь!</span></div><h2>Условия участия в походе:</h2><ul>\r\n<li>\r\n	Это настоящий <a href="http://www.kuluarbc.com.ua/pohody-krym/" target="_blank">пеший поход в Крыму</a> &ndash; мы идем с рюкзаками, еду готовим на костре, спим в палатках. Поход хоть и всего на три дня, но очень красив и насыщен! Мы пройдемся и по горах и вдоль морского побережья! А спать будем на гальке,&nbsp; в нескольких метрах от моря!</li>\r\n<li>\r\n	Если у вас нет личного снаряжения, его можно взять на <a href="http://www.kuluarbc.com.ua/snaryaga/prokat.html" target="_blank">прокат</a>.</li>\r\n<li>\r\n	Действует система <a href="http://www.kuluarbc.com.ua/vse/skidki.html" target="_blank">скидкок</a>!</li>\r\n<li>\r\n	Деньги сдаются гиду в первый день похода. О порядке и способах оплаты можно почитать <a href="http://www.kuluarbc.com.ua/teh/poryadok-oplaty.html" target="_blank">тут</a>.</li>\r\n<li>\r\n	Не забудьте взять фотоаппарат и запас позитива &ndash; с нами всегда весело, надежно и интересно! <img alt="Улыбка" border="0" src="http://www.kuluarbc.com.ua/plugins/editors/jce/tiny_mce/plugins/emotions/img/smiley-smile.gif" title="Улыбка" /></li>\r\n<li>\r\n	Инструктор в зависимости от погодных условий и состояния группы имеет право вносить <a href="http://www.kuluarbc.com.ua/teh/izmenenija-v-marshrute.html" target="_blank">изменения в маршрут.</a></li>\r\n</ul>', '', '', '', '', 700, 2800, 92, 'Симферополь', 'Судак', '', '', '/files/routes/middle/1387387835_41.jpg', '/home/serg/www/localhost/files/routes/middle/1387387835_41.jpg', '/files/routes/thumb/1387387835_44.jpg', '/home/serg/www/localhost/files/routes/thumb/1387387835_44.jpg', '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `route_photos`
---
-
-DROP TABLE IF EXISTS `route_photos`;
-CREATE TABLE IF NOT EXISTS `route_photos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `route_id` int(11) NOT NULL,
-  `original` varchar(255) NOT NULL,
-  `original_p` varchar(255) NOT NULL,
-  `thumb` varchar(255) NOT NULL,
-  `thumb_p` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 

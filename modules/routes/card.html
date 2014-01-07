@@ -49,15 +49,17 @@
   </div>
   <div class="tab-pane" id="preparation">
   <!-- Подготовка к походу -->
-  {{row.preparation}}
+ 	{{row.preparation}}
   </div>
   <div class="tab-pane" id="photos">
   <!-- Фото плиткой -->
-  {{row.photos}}
+  	{% for photo in row.photos %}
+ 		<img src="{{photo.original}}" style="width:50%; height:50%;">
+ 	{% endfor %}
   </div>
   <div class="tab-pane" id="videos">
   <!-- Вывод видео -->
-  {{row.videos}}
+ 	 {{row.videos}}
   </div>
   <div class="tab-pane" id="reviews">
   <!-- Отзывы по походу -->

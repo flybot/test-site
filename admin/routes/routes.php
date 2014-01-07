@@ -37,7 +37,21 @@ $admin->DescribeField("Полное описание",		"descr_long",	"text_fck"
 $admin->DescribeField("Подготовка",		"preparation",	"text_fck", array(0, 0),   true );
 // TODO: подключить больеш одной фотки, идеально чтоб перетащить 10 фоток можно было 
 //		 и админка сама режет, заливает…, как в ВК.
-$admin->DescribeField("Фото",		"photos",	"text_fck", array(0, 0),   true );
+//$admin->DescribeField("Фото",		"photos",	"text_fck", array(0, 0),   true );
+
+$subtype = array( 'name'=>'xself', 'search_field'=>"desc", "value_field"=>"id", "image_field"=>'thumb', 'toadd'=>"/admin/routes/photo.php" );
+$admin->DescribeField("Фотографии", "photos_x", "ManyToMany",
+		array(
+				"rel_table"    =>"route2photo",
+				"this_id"      =>"route_id",
+				"other_id"     =>"photo_id",
+				"other_table"  =>"photo",
+				"opt_query"    => "SELECT `id`, `desc`, `thumb` FROM {{other_table}} WHERE 1",
+				"value"        => "{{id}}",
+				"text"         => "{{desc}}",
+				"subtype"      => $subtype,
+		), true );
+
 $admin->DescribeField("Видео",		"videos",	"text_fck", array(0, 0),   true );
 $admin->DescribeField("Отзывы",		"reviews",	"text_fck", array(0, 0),   true );
 $admin->DescribeField("Стоимость грн.", 	"cost_grn",    	"float",   array(0, 99999), true );

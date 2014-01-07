@@ -49,7 +49,5 @@ $admin->filter->AddField("Дата старта",	'date_start',   1, '', null,  
 $admin->filter->AddField("Дата финиша",	'date_finish',   1, '', null,   False);
 $admin->filter->AddField("Инструктор",	'trainer_id',   1, '', null,   False);
 
-//$admin->filter->AddField("Заголовок темы",  'title',      1, '', null,   False);
-
 $admin->DoAction();
 ?>
